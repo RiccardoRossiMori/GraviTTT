@@ -11,18 +11,9 @@
 
 public class CheckerboardManager {
 
-	/*
-	//TODO definisci un flusso di computazione
-	//TODO gestione turni
-	//TODO sistemare la faccenda delle dimensioni (essenzialmente come fare a prendere il valore del numero di righe e colonne)
-	//TODO "getRigaBassa" per sapere dove mettere la pedina nella colonna x
-	//TODO posizionamento di una pedina in una colonna
-	//TODO implementa i factory method per i <code>PlayerFactory</code>
-	//TODO implementare i player in modo da poter immettere una pedina secondo le varie strategie
-	//TODO gestione eccezioni (creale attraverso i test)
-	 */
+	
 
-	private MatrixCheckerboard checkerboard;
+/*	private MatrixCheckerboard checkerboard;
 	private CheckerboardVariables dimensioni= CheckerboardVariables.DEFAULT_SIZE;
 	
 	/**
@@ -31,11 +22,12 @@ public class CheckerboardManager {
 	 * con il valore di <code>limitation</code> settato a true, ovvero la scacchiera ha i bordi esterni e non è
 	 * possibile vincere sfruttando l'adiacenza tra bordo sinistro e bordo destro. 
 	 * 
-	 */
+	 *
 	public CheckerboardManager() {
 		this.checkerboard = new MatrixCheckerboard(dimensioni);
 	}
-	
+*/	
+
 	/**
 	 * 
 	 * Costruttore che permette di instanziare una <code>MatrixCheckerboard</code> con <code>i</code> righe e <code>j</code> colonne
@@ -49,7 +41,7 @@ public class CheckerboardManager {
 	 */
 	
 	public CheckerboardManager(int i, int j, boolean flag) {
-		this.checkerboard = new MatrixCheckerboard(new CheckerboardVariables(i, j, flag));
+	//	this.checkerboard = new MatrixCheckerboard(new CheckerboardVariables(i, j, flag));
 	}
 	
 	/**
@@ -62,7 +54,7 @@ public class CheckerboardManager {
 	public void action (int p) {
 		//TODO implementare il metodo
 		Pawn disco= Pawn.Green;
-		checkerboard.putPawn(p, disco);
+	//	checkerboard.putPawn(p, disco);
 	}
 
 }

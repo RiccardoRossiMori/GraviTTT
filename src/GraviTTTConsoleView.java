@@ -1,5 +1,8 @@
 /**
  * 
+ * <b>Responsabilità: </b>Gestisce una view testuale basata 
+ * su console per interagirvi in maniera testuale.
+ * 
  */
 
 /**

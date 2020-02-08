@@ -1,5 +1,8 @@
 /**
  * 
+ * <b>Responsabilità: </b>Categorizza delle eccezioni che vengono 
+ * sollevate dal gioco stesso per comportamenti errati.
+ * 
  */
 
 /**

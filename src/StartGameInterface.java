@@ -1,5 +1,7 @@
 /**
  * 
+ * <b>Responsabilità: </b>Inizializzare una partita tra due <code>Player</code> con una <code>Checkerboard</code>.
+ * 
  */
 
 /**
@@ -8,7 +10,6 @@
  */
 public interface StartGameInterface {
 	
-	
-	 void setSize(int i, int j);
+	void setSize(int i, int j, boolean flag);
 
 }

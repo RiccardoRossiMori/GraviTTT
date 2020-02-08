@@ -1,5 +1,7 @@
 /**
  * 
+ * <b>Responsabilità: </b>Gestisce la strategia di gioco di un <code>Player</code>.
+ * 
  */
 
 /**

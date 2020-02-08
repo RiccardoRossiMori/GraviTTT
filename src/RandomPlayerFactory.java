@@ -1,5 +1,7 @@
 /**
  * 
+ * <b>Responsabilità: </b>Genera un costruttore di un bot <code>RandomPlayer</code>.
+ * 
  */
 
 /**

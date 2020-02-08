@@ -1,5 +1,7 @@
 /**
  * 
+ * <b>Responsabilità: </b>Gestisce una vista generica sul gioco.
+ * 
  */
 
 /**

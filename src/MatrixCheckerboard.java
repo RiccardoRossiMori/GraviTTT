@@ -13,15 +13,22 @@ import java.util.List;
 public class MatrixCheckerboard implements Checkerboard {
 
 	public Pawn[][] gameboard;
+	private CheckerboardVariables dimensioni;
 
 	public MatrixCheckerboard(CheckerboardVariables s) {
 		this.gameboard = new Pawn[s.getColumn()][s.getRow()];
+		this.setVariabiliDiGioco(s);
 	}
 
 	@Override
-	public void putPawn(int p, Pawn disco) {
+	public void putPawn(int p, Pawn disco) throws IllegalPawnPlacement {
+		if (p > dimensioni.getColumn() || p<0) {
+			 throw new IllegalPawnPlacement();
+		}
+		int x = 0;
 		// x=metodo che mi da la riga nella colonna
-		gameboard[0][p] = disco;
+		gameboard[x][p] = disco;
+
 	}
 
 	@Override
@@ -40,6 +47,20 @@ public class MatrixCheckerboard implements Checkerboard {
 
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/**
+	 * @return the variabiliDiGioco
+	 */
+	public CheckerboardVariables getVariabiliDiGioco() {
+		return dimensioni;
+	}
+
+	/**
+	 * @param variabiliDiGioco the variabiliDiGioco to set
+	 */
+	private void setVariabiliDiGioco(CheckerboardVariables variabiliDiGioco) {
+		this.dimensioni = variabiliDiGioco;
 	}
 
 }

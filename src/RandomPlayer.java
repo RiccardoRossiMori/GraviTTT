@@ -14,12 +14,13 @@ public class RandomPlayer implements Player {
 	 * 
 	 * Implementa la strategia di gioco di un bot che posiziona <code>Pawn</code> a caso
 	 * nella <code>Checkerbox</code> in uso.
+	 * @return 
 	 * 
 	 */
 	@Override
-	public void strategy() {
+	public boolean strategy() {
 		// TODO Auto-generated method stub
-
+		return false;
 	}
 
 }

@@ -9,5 +9,5 @@
  *
  */
 public interface Player {
-	public void strategy();
+	public boolean strategy();
 }

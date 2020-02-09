@@ -15,12 +15,13 @@ public class InteractivePlayer implements Player {
 	 * Implementa la strategia di gioco di un giocatore interattivo, per tanto
 	 * chiederà in input un valore intero corrispondente alla colonna nella quale
 	 * verrà posizionata la pedina.
+	 * @return 
 	 * 
 	 */
 	@Override
-	public void strategy() {
+	public boolean strategy() {
 		// TODO Auto-generated method stub
-
+		return false;
 	}
 
 }

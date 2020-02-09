@@ -11,6 +11,7 @@
 public interface GameManagerInterface {
 
 	void cambioTurno();
+
 	
 	
 }

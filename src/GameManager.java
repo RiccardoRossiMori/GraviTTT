@@ -21,7 +21,7 @@ public class GameManager implements GameManagerInterface {
 	 */
 	private CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
 	private MatrixCheckerboard checkerboard;
-	private boolean winner,flag;
+	private boolean winner, turno;
 	private Player giocatore1;
 	private Player giocatore2;
 
@@ -30,6 +30,7 @@ public class GameManager implements GameManagerInterface {
 	 */
 	@Override
 	public void cambioTurno() {
+		this.turno = !turno;
 	}
 
 	/**
@@ -38,26 +39,24 @@ public class GameManager implements GameManagerInterface {
 	 * 
 	 */
 	private void init() {
-		giocatore1= new InteractivePlayer();
-		giocatore2=new InteractivePlayer();
+		giocatore1 = new InteractivePlayer();
+		giocatore2 = new InteractivePlayer();
 		this.setCheckerboard(new MatrixCheckerboard(dimensioni));
-		winner=false;
-		flag=false;
+		winner = false;
+		turno = true;
 	}
-	
-	private Player azione() {
-		return flag?giocatore1:giocatore2;
+
+	private Player getGiocatore() {
+		return turno ? giocatore1 : giocatore2;
 	}
-	
+
 	public void provaMain() {
 		this.init();
-		while(!winner) {
-			flag=!flag;//????????????????????????????? oppure no?????????????????????????????????????
-			winner=azione().strategy();
+		while (!winner) {
+			winner = getGiocatore().strategy();
+			cambioTurno();
 		}
-		azione().toString();//sarebbe essenzialmente la stampa del giocatore vincitore
-		
-		
+		getGiocatore().toString();// sarebbe essenzialmente la stampa del giocatore vincitore
 	}
 
 	/**
@@ -72,6 +71,14 @@ public class GameManager implements GameManagerInterface {
 	 */
 	private void setCheckerboard(MatrixCheckerboard checkerboard) {
 		this.checkerboard = checkerboard;
+	}
+
+	@Override
+	public Player scegliGiocatori() {
+		// TODO Auto-generated method stub
+		String x,y;
+		x= GraviTTTView.getPlayer("Inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
+		return null;
 	}
 
 }

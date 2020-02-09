@@ -11,7 +11,7 @@
 public interface GameManagerInterface {
 
 	void cambioTurno();
-
+	Player scegliGiocatori();
 	
 	
 }

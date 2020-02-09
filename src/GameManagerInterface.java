@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.util.List;
+
 /**
  * 
  * <b>Responsabilità: </b>Gestisce una partita tra due giocatori.
@@ -11,7 +14,7 @@
 public interface GameManagerInterface {
 
 	void cambioTurno();
-	Player scegliGiocatori();
+	//List<? extends Player> scegliGiocatori() throws IOException;
 	
 	
 }

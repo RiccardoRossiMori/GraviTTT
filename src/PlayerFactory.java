@@ -8,6 +8,8 @@
  * @author Riccardo Rossi Mori
  *
  */
+@FunctionalInterface
 public interface PlayerFactory {
+	void doSomething();
 
 }

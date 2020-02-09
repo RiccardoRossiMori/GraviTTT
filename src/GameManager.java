@@ -1,3 +1,8 @@
+import java.io.IOException;
+//import java.util.List;
+import java.util.function.Function;
+
+
 /**
  * 
  * <b>Responsabilità: </b>Gestisce la partita di due giocatori.
@@ -21,6 +26,7 @@ public class GameManager implements GameManagerInterface {
 	 */
 	private CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
 	private MatrixCheckerboard checkerboard;
+	private GraviTTTView vista;
 	private boolean winner, turno;
 	private Player giocatore1;
 	private Player giocatore2;
@@ -42,6 +48,7 @@ public class GameManager implements GameManagerInterface {
 		giocatore1 = new InteractivePlayer();
 		giocatore2 = new InteractivePlayer();
 		this.setCheckerboard(new MatrixCheckerboard(dimensioni));
+		vista= new GraviTTTConsoleView();
 		winner = false;
 		turno = true;
 	}
@@ -73,12 +80,24 @@ public class GameManager implements GameManagerInterface {
 		this.checkerboard = checkerboard;
 	}
 
-	@Override
-	public Player scegliGiocatori() {
+	//verride
+	public void scegliGiocatori1() throws IOException {
 		// TODO Auto-generated method stub
+		//List<Player> giocatori=null;
 		String x,y;
-		x= GraviTTTView.getPlayer("Inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
-		return null;
+		x= vista.getPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
+		y= vista.getPlayer("Secondo giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
+		getPlayerFactory(x.toLowerCase());
+		getPlayerFactory(y.toLowerCase());
+		//giocatori.add(getPlayerFactory(x));
+		//giocatori.add(y.toLowerCase());	//TODO refactoring del codice, ho fatto un cut & paste!
+		//return giocatori;
+	}
+	private static Function<String,Player> getPlayerFactory(String string) {
+		if (string.equals("bot")) {
+			return p -> new RandomPlayer();
+		}
+		return (p -> new InteractivePlayer());
 	}
 
 }

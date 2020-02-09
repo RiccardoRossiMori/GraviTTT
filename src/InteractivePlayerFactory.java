@@ -10,4 +10,10 @@
  */
 public class InteractivePlayerFactory implements PlayerFactory {
 
+	@Override
+	public void doSomething() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

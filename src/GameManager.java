@@ -16,7 +16,7 @@ import java.util.function.Function;
 public class GameManager implements GameManagerInterface {
 	/*
 	 * TODO definisci un flusso di computazione (scrivi i metodi senza elaborarli troppo)
-	 * TODO gestione turni 
+	 * TOD gestione turni 
 	 * TODO sistemare la faccenda delle dimensioni (essenzialmente come fare a prendere il valore del numero di righe e colonne)... serve? 
 	 * TODO ("getRigaBassa") implementa <code>gravity</code> per sapere dove mettere la pedina nella colonna x 
 	 * TODO posizionamento di una pedina in una colonna 
@@ -42,11 +42,13 @@ public class GameManager implements GameManagerInterface {
 	/**
 	 * 
 	 * Inizializza le variabili di gioco
+	 * @throws IOException 
 	 * 
 	 */
-	private void init() {
-		giocatore1 = new InteractivePlayer();
-		giocatore2 = new InteractivePlayer();
+	private void init() throws IOException {
+		scegliGiocatori1();
+		/*giocatore1 = new InteractivePlayer();
+		giocatore2 = new InteractivePlayer();*/
 		this.setCheckerboard(new MatrixCheckerboard(dimensioni));
 		vista= new GraviTTTConsoleView();
 		winner = false;
@@ -57,7 +59,7 @@ public class GameManager implements GameManagerInterface {
 		return turno ? giocatore1 : giocatore2;
 	}
 
-	public void provaMain() {
+	public void provaMain() throws IOException {
 		this.init();
 		while (!winner) {
 			winner = getGiocatore().strategy();

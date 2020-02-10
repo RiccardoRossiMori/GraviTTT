@@ -25,11 +25,11 @@ public class InteractivePlayer implements Player {
 	 * 
 	 */
 	@Override
-	public boolean strategy() throws NumberFormatException, IOException {
+	public int strategy() throws NumberFormatException, IOException {
 		// TODO Auto-generated method stub
 		BufferedReader read=new BufferedReader(new InputStreamReader(System.in));
 		int colonna = Integer.parseInt(read.readLine());
-		return CheckerboardManager.action(colonna);
+		return colonna;
 	}
 
 }

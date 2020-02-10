@@ -21,14 +21,14 @@ public class MatrixCheckerboard implements Checkerboard {
 	}
 
 	@Override
-	public void putPawn(int p, Pawn disco) throws IllegalPawnPlacement {
+	public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacement {
 		if (p > dimensioni.getColumn() || p<0) {
 			 throw new IllegalPawnPlacement();
 		}
 		int x = 0;
 		// x=metodo che mi da la riga nella colonna
 		gameboard[x][p] = disco;
-
+		return true;
 	}
 
 	@Override

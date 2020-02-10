@@ -18,9 +18,10 @@ public class RandomPlayer implements Player {
 	 * 
 	 */
 	@Override
-	public boolean strategy() {
+	public int strategy() {
+
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 }

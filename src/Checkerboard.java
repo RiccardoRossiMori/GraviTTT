@@ -29,9 +29,10 @@ public interface Checkerboard {
 	 * 
 	 * @param p
 	 * @param disco
-	 * @throws IllegalPawnPlacement 
+	 * @throws IllegalPawnPlacement
+	 * @return
 	 */
-	public void putPawn(int p, Pawn disco) throws IllegalPawnPlacement;
+	public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacement;
 
 	/**
 	 * 

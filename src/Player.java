@@ -11,5 +11,5 @@ import java.io.IOException;
  *
  */
 public interface Player {
-	public boolean strategy() throws NumberFormatException, IOException;
+	public int strategy() throws NumberFormatException, IOException;
 }

@@ -1,6 +1,6 @@
 /**
  * 
- * <b> Responsabilità: </b> Gestire la scacchiera (posizionare una pedina, )
+ * <b> Responsabilitï¿½: </b> Gestire la scacchiera (posizionare una pedina, )
  * 
  */
 
@@ -10,6 +10,7 @@
  */
 
 public class CheckerboardManager {
+	private GameManager gameManager;
 
 	
 
@@ -19,7 +20,7 @@ public class CheckerboardManager {
 	/**
 	 * 
 	 * Costruttore di default che permette di instanziare una <code>MatrixCheckerboard</code> con 6 righe e 7 colonne
-	 * con il valore di <code>limitation</code> settato a true, ovvero la scacchiera ha i bordi esterni e non è
+	 * con il valore di <code>limitation</code> settato a true, ovvero la scacchiera ha i bordi esterni e non ï¿½
 	 * possibile vincere sfruttando l'adiacenza tra bordo sinistro e bordo destro. 
 	 * 
 	 *
@@ -32,7 +33,7 @@ public class CheckerboardManager {
 	 * 
 	 * Costruttore che permette di instanziare una <code>MatrixCheckerboard</code> con <code>i</code> righe e <code>j</code> colonne
 	 * con il valore di <code>limitation</code> settato a <code>flag</code>, dove con true si intende che la scacchiera ha dei bordi
-	 * e con false si intende che la scacchiera non abbia i suddetti limiti esterni, per cui si può (o meno) vincere sfruttando
+	 * e con false si intende che la scacchiera non abbia i suddetti limiti esterni, per cui si puï¿½ (o meno) vincere sfruttando
 	 * l'adiacenza del bordo destro e bordo sinistro.
 	 * 
 	 * @param i
@@ -48,13 +49,17 @@ public class CheckerboardManager {
 	 * 
 	 * <code>action</code> consente di posizionare un <code>Pawn</code> (pedina/disco) nella colonna <code>p</code> della scacchiera
 	 * <code>checkerboard</code>.
-	 * 
+	 *
 	 * @param p
+	 * @param turno
+	 * @return
 	 */
-	public void action (int p) {
+	public boolean action(int p, boolean turno) throws IllegalPawnPlacement {
 		//TODO implementare il metodo
-		Pawn disco= Pawn.Green;
+		//GameManagerInterface.getCheckerboard().putPawn(p,Pawn.Red);
+		//Pawn disco= Pawn.Green;
 	//	checkerboard.putPawn(p, disco);
+		return 	turno?gameManager.getCheckerboard().putPawn(p,Pawn.Red):gameManager.getCheckerboard().putPawn(p,Pawn.Green);
 	}
 
 }

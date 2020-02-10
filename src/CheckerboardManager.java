@@ -46,6 +46,10 @@ public class CheckerboardManager {
 	//	this.checkerboard = new MatrixCheckerboard(new CheckerboardVariables(i, j, flag));
 	}
 
+	public static boolean isItEmpty(Integer i, Integer j) {
+		return Checkerboard.isItFree(i,j);
+	}
+
 	public MatrixCheckerboard getScacchiera() {
 		return scacchiera;
 	}
@@ -64,7 +68,7 @@ public class CheckerboardManager {
 	 * @return
 	 */
 	public boolean action(int p, boolean turno) throws IllegalPawnPlacement {
-		//TODO implementare il metodo
+		//ODO implementare il metodo
 		//GameManagerInterface.getCheckerboard().putPawn(p,Pawn.Red);
 		//Pawn disco= Pawn.Green;
 	//	checkerboard.putPawn(p, disco);

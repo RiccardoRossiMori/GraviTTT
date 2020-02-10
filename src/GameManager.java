@@ -15,11 +15,12 @@ import java.util.function.Function;
  */
 public class GameManager implements GameManagerInterface {
 	/*
-	 * TODO Implementa meglio il metodo scegliGiocatori1();
+	 * TODO Implementa la stampa del campo di gioco
+	 * TODO Implementa le condizioni di vincita
+	 * TODO Implementa il posizionamento delle pedine
 	 * TODO definisci un flusso di computazione (scrivi i metodi senza elaborare troppo)
 	 * TODO ("getRigaBassa") implementa <code>gravity</code> per sapere dove mettere la pedina nella colonna x 
-	 * TODO posizionamento di una pedina in una colonna 
-	 * TODO implementa i factory method per i <code>PlayerFactory</code> 
+	 * TODO posizionamento di una pedina in una colonna
 	 * TODO implementare i player in modo da poter immettere una pedina secondo le varie strategie 
 	 * TODO gestione eccezioni (create attraverso i test)
 	 */
@@ -78,6 +79,7 @@ public class GameManager implements GameManagerInterface {
 		this.init();
 		int i=0;
 		while (/*!winner*/i<4) {
+			vista.printCheckerboard(scacchiera);
 			i++;
 			winner = checkerboardManager.action(getGiocatore().strategy(),turno);
 			if(!winner)cambioTurno();

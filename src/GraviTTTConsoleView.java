@@ -1,5 +1,3 @@
-import sun.net.www.http.ChunkedOutputStream;
-
 import java.io.*;
 import java.util.stream.Stream;
 
@@ -15,11 +13,20 @@ import java.util.stream.Stream;
  *
  */
 public class GraviTTTConsoleView implements GraviTTTView {
+	public static final String RED="R";
+	public static final String GREEN="G";
+	public static final String NONE=" ";
 
 	BufferedReader buffer;
 	Stream<String> printer;
 
-	
+	@Override
+	public void printCheckerboard(MatrixCheckerboard scacchiera){
+		printer=Stream.of();
+		printer.forEach(p ->System.out.println(p));
+
+	}
+
 
 	private void print(String string) {
 		// TODO Auto-generated method stub

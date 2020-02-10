@@ -12,6 +12,6 @@ import java.io.IOException;
  */
 public interface GraviTTTView {
 
-	String getPlayer(String message) throws IOException;
+	String getStringPlayer(String message) throws IOException;
 
 }

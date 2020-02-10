@@ -32,4 +32,9 @@ public class InteractivePlayer implements Player {
 		return colonna;
 	}
 
+	@Override
+	public String stampa() {
+		return "InteractivePlayer";
+	}
+
 }

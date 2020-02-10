@@ -11,6 +11,7 @@
 
 public class CheckerboardManager {
 	private GameManager gameManager;
+	private MatrixCheckerboard scacchiera;
 
 	
 
@@ -44,6 +45,14 @@ public class CheckerboardManager {
 	public CheckerboardManager(int i, int j, boolean flag) {
 	//	this.checkerboard = new MatrixCheckerboard(new CheckerboardVariables(i, j, flag));
 	}
+
+	public MatrixCheckerboard getScacchiera() {
+		return scacchiera;
+	}
+
+	public CheckerboardManager(MatrixCheckerboard scacchiera ){
+		this.scacchiera=scacchiera;
+	}
 	
 	/**
 	 * 
@@ -59,7 +68,7 @@ public class CheckerboardManager {
 		//GameManagerInterface.getCheckerboard().putPawn(p,Pawn.Red);
 		//Pawn disco= Pawn.Green;
 	//	checkerboard.putPawn(p, disco);
-		return 	turno?gameManager.getCheckerboard().putPawn(p,Pawn.Red):gameManager.getCheckerboard().putPawn(p,Pawn.Green);
+		return 	turno?scacchiera.putPawn(p,Pawn.Red):scacchiera.putPawn(p,Pawn.Green);
 	}
 
 }

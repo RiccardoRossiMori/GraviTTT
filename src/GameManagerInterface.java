@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface GameManagerInterface {
 
-    MatrixCheckerboard getCheckerboard();
+    MatrixCheckerboard getScacchiera();
 
     void cambioTurno();
 	//List<? extends Player> scegliGiocatori() throws IOException;

@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.BiFunction;
 
 /**
  * 
@@ -15,6 +13,7 @@ import java.util.function.BiFunction;
 public class MatrixCheckerboard implements Checkerboard {
 
 	public Pawn[][] gameboard;
+	private int lastrow, lastcolumn;
 	//private  String brico;
 	private CheckerboardVariables dimensioni;
 
@@ -53,7 +52,16 @@ public class MatrixCheckerboard implements Checkerboard {
 		int x = 0;
 		// x=metodo che mi da la riga nella colonna
 		gameboard[x][p] = disco;
+		lastrow=x;
+		lastcolumn=p;
+
 		//TODO controlla quì le condizioni di vincita con <code>pawnNeighbor</code>
+		return vincitore(x,p);
+	}
+
+	@Override
+	public boolean vincitore(int i, int j){
+		
 		return true;
 	}
 
@@ -77,19 +85,33 @@ public class MatrixCheckerboard implements Checkerboard {
 		System.out.println(x + " valore restituito");
 	}*/
 
-	@Override
-	public List<Pawn> pawnNeighbor(Pawn p) {//TODO Implementa il metodo, il tipo di ritorno deve essere una lista? verificalo.
+	/**
+	 *
+	 * Restituisce un intero che dice quante pedine ho di fila attorno a me.
+	 *
+	 * @param row
+	 * @param column
+	 * @return
+	 */
 
-		// TODO Auto-generated method stub
-		return null;
+	private int vicini (int row, int column) {
+		//TODO Implementa il metodo, cambia il tipo di ritorno.
+		
+		return 0;
 	}
 
+	@Override
+	public int pawnNeighbor() {
+		return vicini(lastrow,lastcolumn);
+	}
+
+	/*
 	/**
 	 * @return the variabiliDiGioco
-	 */
+	 *//*
 	public CheckerboardVariables getVariabiliDiGioco() {
 		return dimensioni;
-	}
+	}*/
 
 	/**
 	 * @param variabiliDiGioco the variabiliDiGioco to set

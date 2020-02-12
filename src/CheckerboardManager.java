@@ -46,9 +46,7 @@ public class CheckerboardManager {
 	//	this.checkerboard = new MatrixCheckerboard(new CheckerboardVariables(i, j, flag));
 	}
 
-	public static boolean isItEmpty(Integer i, Integer j) {
-		return Checkerboard.isItFree(i,j);
-	}
+
 
 	public MatrixCheckerboard getScacchiera() {
 		return scacchiera;

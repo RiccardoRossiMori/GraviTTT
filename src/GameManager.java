@@ -5,7 +5,10 @@ import java.util.function.Function;
 
 /**
  * 
- * <b>Responsabilità: </b>Gestisce la partita di due giocatori.
+ * <b>Responsabilità: </b>Gestisce la partita di due giocatori, dunque:
+ * 	-inserire pedine
+ * 	-cambio turni
+ * 	-conclude il gioco in caso di vincita di un giocatore.
  * 
  */
 
@@ -15,8 +18,8 @@ import java.util.function.Function;
  */
 public class GameManager implements GameManagerInterface {
 	/*
-	 * TODO Implementa la stampa del campo di gioco
 	 * TODO Implementa le condizioni di vincita
+	 * TODO Implementa la stampa del campo di gioco
 	 * TODO Implementa il posizionamento delle pedine
 	 * TODO definisci un flusso di computazione (scrivi i metodi senza elaborare troppo)
 	 * TODO ("getRigaBassa") implementa <code>gravity</code> per sapere dove mettere la pedina nella colonna x 
@@ -32,7 +35,15 @@ public class GameManager implements GameManagerInterface {
 	private Player giocatore1;
 	private Player giocatore2;
 
-	private static Function<String,Player> getPlayerFactory(String string) {//TODO implementa per bene il metodo
+	/**
+	 * 
+	 * getPlayerFactory, presa una stringa, instanzia un giocatore del tipo richiesto.
+	 * 
+	 * @param string
+	 * @return
+	 */
+	
+	private static Function<String,Player> getPlayerFactory(String string) {// TODO spostare in StartGameDefault
 		if (string.equals("bot")) {
 			return p -> new RandomPlayer();
 		}
@@ -53,36 +64,36 @@ public class GameManager implements GameManagerInterface {
 	 * @throws IOException
 	 *
 	 */
-	private void init() throws IOException {
-		/* scegliGiocatori1(); */
+	private void init() throws IOException {// TODO spostare in StartGameDefault
 		vista= new GraviTTTConsoleView();
-
-		this.setScacchiera(new MatrixCheckerboard(dimensioni));//TODO controlla che la responsabilità sia coerente con questo set
+		this.setScacchiera(new MatrixCheckerboard(dimensioni));
 		checkerboardManager=new CheckerboardManager(scacchiera);
-		//TODO controlla che la responsabilità sia coerente l'inizializzazione precedente
-		//checkerboardManager=new CheckerboardManager(dimensioni.getRow(),dimensioni.getColumn(),dimensioni.isLimited());
-
 		winner = false;
 		turno = true;
 		giocatore1 = scegliGiocatori1("Primo");
 		giocatore2 = scegliGiocatori1("Secondo");
 	}
 
+	/**
+	 *
+	 * Restituisce, sotto forma di booleano, il turno del giocatore 1 o del giocatore 2.
+	 *
+	 * @return
+	 */
+
 	private Player getGiocatore() {
 		return turno ? giocatore1 : giocatore2;
 	}
-	/*public static void main(String argv[]){
-		GameManager.main();
-	}*/
 
-	public void main() throws IOException, IllegalPawnPlacement {
+	public void main() throws IOException, IllegalPawnPlacement {//TODO forse da spostare in StartGameDefault
 		this.init();
 		int i=0;
 		while (/*!winner*/i<4) {
 			vista.printCheckerboard(scacchiera);
 			i++;
 			winner = checkerboardManager.action(getGiocatore().strategy(),turno);
-			if(!winner)cambioTurno();
+			//if(!winner)	//TODO questo if è disabilitato poiché non è ancora stata implementata la vincita della partita
+				cambioTurno();
 		}
 		System.out.println(getGiocatore().stampa());// sarebbe essenzialmente la stampa del giocatore vincitore
 	}
@@ -102,18 +113,24 @@ public class GameManager implements GameManagerInterface {
 		this.scacchiera = scacchiera;
 	}
 
+	/**
+	 *
+	 * Instanzia un particolare Player a seconda della stringa inserita.
+	 * Se si scrive 'bot' verrà instanziato un Player di tipo RandomPlayer, che eseguirà ogni
+	 * mossa casualmente, mentre se si scriverà una qualunque altra cosa verrà instanziato un
+	 * Player di tipo InteractivePlayer, ossia un giocatore Interattivo.
+	 *
+	 * @param giocatorenumerox
+	 * @return
+	 * @throws IOException
+	 */
 	//verride
-	public Player scegliGiocatori1(String x) throws IOException {
-		// TODO Auto-generated method stub
+	public Player scegliGiocatori1(String giocatorenumerox) throws IOException {	// TODO spostare in StartGameDefault
 		//List<Player> giocatori=null;
-		String y;
-		//x= vista.getStringPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
-		y= vista.getStringPlayer(x+" giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
+		String tipodigiocatorescelto; //x= vista.getStringPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
+		tipodigiocatorescelto= vista.getStringPlayer(giocatorenumerox+" giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
 		//getPlayerFactory(x.toLowerCase()); //TODO refactoring del codice, instanzio ma non ho il riferimento all'oggetto... pointless!
-		return getPlayerFactory(y.toLowerCase()).apply(y.toLowerCase());
-		//giocatori.add(getPlayerFactory(x));
-		//giocatori.add(y.toLowerCase());	//TODO refactoring del codice, ho fatto un cut & paste!
-		//return giocatori;
+		return getPlayerFactory(tipodigiocatorescelto.toLowerCase()).apply(tipodigiocatorescelto.toLowerCase());
+		//giocatori.add(getPlayerFactory(x)); //giocatori.add(y.toLowerCase()); //return giocatori;	//TODO refactoring del codice, ho fatto un cut & paste!
 	}
-
 }

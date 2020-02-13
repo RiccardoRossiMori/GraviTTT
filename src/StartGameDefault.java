@@ -52,7 +52,7 @@ public class StartGameDefault implements StartGameInterface{
 		String tipodigiocatorescelto; //x= vista.getStringPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
 		tipodigiocatorescelto= gameManager.vista.getStringPlayer(giocatorenumerox+" giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
 		//getPlayerFactory(x.toLowerCase());
-		return getPlayerFactory(tipodigiocatorescelto.toLowerCase()).apply(tipodigiocatorescelto.toLowerCase());
+		return getPlayerFactory(tipodigiocatorescelto.toLowerCase());
 		//giocatori.add(getPlayerFactory(x)); //giocatori.add(y.toLowerCase()); //return giocatori;
 	}
 	/**
@@ -63,11 +63,11 @@ public class StartGameDefault implements StartGameInterface{
 	 * @return
 	 */
 
-	private static Function<String,Player> getPlayerFactory(String string) {
+	private static Player getPlayerFactory(String string) {
 		if (string.equals("bot")) {
-			return p -> new RandomPlayer();
+			return new RandomPlayer();
 		}
-		return (p -> new InteractivePlayer());
+		return new InteractivePlayer();
 	}
 
 }

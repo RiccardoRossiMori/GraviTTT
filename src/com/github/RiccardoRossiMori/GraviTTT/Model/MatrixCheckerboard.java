@@ -1,6 +1,6 @@
 package com.github.RiccardoRossiMori.GraviTTT.Model;
 
-import com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement;
+import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
 
 import java.util.Arrays;
 
@@ -49,9 +49,9 @@ public class MatrixCheckerboard implements Checkerboard {
 */
 
 	@Override
-	public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacement {
+	public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException {
 		if (p > dimensioni.getColumn() || p<0) {
-			 throw new IllegalPawnPlacement();
+			 throw new IllegalPawnPlacementException();
 		}
 		int x = 0;
 		// x=metodo che mi da la riga nella colonna
@@ -80,7 +80,7 @@ public class MatrixCheckerboard implements Checkerboard {
 				i++;
 		}
 	}
-/*	public static void com.github.RiccardoRossiMori.GraviTTT.main(String argv[]) throws com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement {
+/*	public static void com.github.RiccardoRossiMori.GraviTTT.main(String argv[]) throws com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacement {
 		com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables dimensioni = com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables.DEFAULT_SIZE;
 		com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard matrixCheckerboard = new com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard(dimensioni);
 		matrixCheckerboard.putPawn(1,com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red);

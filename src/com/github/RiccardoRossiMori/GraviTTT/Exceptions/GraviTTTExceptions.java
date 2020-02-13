@@ -1,4 +1,4 @@
-package com.github.RiccardoRossiMori.GraviTTT; /**
+package com.github.RiccardoRossiMori.GraviTTT.Exceptions; /**
  * 
  * <b>Responsabilità: </b>Categorizza delle eccezioni che vengono 
  * sollevate dal gioco stesso per comportamenti errati.

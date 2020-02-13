@@ -1,6 +1,6 @@
 package com.github.RiccardoRossiMori.GraviTTT.Controller;
 
-import com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement;
+import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
 import com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.Player;
@@ -8,7 +8,6 @@ import com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTView;
 
 import java.io.IOException;
 //import java.util.List;
-import java.util.function.Function;
 
 
 /**
@@ -69,7 +68,7 @@ public class GameManager implements GameManagerInterface {
 		return turno ? giocatore1 : giocatore2;
 	}
 
-	public void main() throws IOException, IllegalPawnPlacement {//TODO spostare in un com.github.RiccardoRossiMori.GraviTTT.main o in startGameDefault
+	public void main() throws IOException, IllegalPawnPlacementException {//TODO spostare in un com.github.RiccardoRossiMori.GraviTTT.main o in startGameDefault
 		startGameInterface.init();
 		//TODO risolvi le prossime due instanziazioni in modo da demandare tutto a com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameInterface (ovvero com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameDefault)
 		this.giocatore1 = startGameInterface.scegliGiocatori1("Primo");

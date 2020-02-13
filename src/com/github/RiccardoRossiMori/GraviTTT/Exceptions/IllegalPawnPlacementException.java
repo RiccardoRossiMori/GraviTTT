@@ -1,4 +1,4 @@
-package com.github.RiccardoRossiMori.GraviTTT; /**
+package com.github.RiccardoRossiMori.GraviTTT.Exceptions; /**
  * 
  * <b>Responsabilità: </b>Questa eccezione viene sollevata nel momento in cui 
  * una pedina non può essere posizionata in una data colonna.
@@ -9,7 +9,7 @@ package com.github.RiccardoRossiMori.GraviTTT; /**
  * @author Riccardo Rossi Mori
  *
  */
-public class IllegalPawnPlacement extends GraviTTTExceptions{
+public class IllegalPawnPlacementException extends GraviTTTExceptions{
 
 	/**
 	 * 

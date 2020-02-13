@@ -4,7 +4,7 @@ package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  * 
  */
 
-import com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement;
+import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
 
 /**
  * @author Riccardo Rossi Mori
@@ -20,10 +20,10 @@ public interface Checkerboard {
 	 * 
 	 * @param p
 	 * @param disco
-	 * @throws IllegalPawnPlacement
+	 * @throws IllegalPawnPlacementException
 	 * @return
 	 */
-	public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacement;
+	public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException;
 
 	boolean vincitore(int i, int j);
 

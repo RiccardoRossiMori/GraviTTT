@@ -5,7 +5,7 @@ package com.github.RiccardoRossiMori.GraviTTT.Controller;
  * 
  */
 
-import com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement;
+import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.Pawn;
 
@@ -70,7 +70,7 @@ public class CheckerboardManager {
 	 * @param turno
 	 * @return
 	 */
-	public boolean action(int p, boolean turno) throws IllegalPawnPlacement {
+	public boolean action(int p, boolean turno) throws IllegalPawnPlacementException {
 		//ODO implementare il metodo
 		//com.github.RiccardoRossiMori.GraviTTT.GameManagerInterface.getCheckerboard().putPawn(p,com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red);
 		//com.github.RiccardoRossiMori.GraviTTT.Model.Pawn disco= com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Green;

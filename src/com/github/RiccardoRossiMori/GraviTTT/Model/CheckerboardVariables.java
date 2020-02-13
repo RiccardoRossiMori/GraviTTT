@@ -1,4 +1,4 @@
-/**
+package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  * 
  * <b> Responsabilità: </b> Gestisce le variabili della scacchiera, ovvero le dimensioni della stessa e,tramite
  * <code>limited</code>, si definisce se la scacchiera in questione sia limitata esteriormente o meno,

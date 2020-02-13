@@ -1,3 +1,5 @@
+package com.github.RiccardoRossiMori.GraviTTT.Model;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,7 +36,7 @@ public class InteractivePlayer implements Player {
 
 	@Override
 	public String stampa() {
-		return "InteractivePlayer";
+		return "com.github.RiccardoRossiMori.GraviTTT.Model.InteractivePlayer";
 	}
 
 }

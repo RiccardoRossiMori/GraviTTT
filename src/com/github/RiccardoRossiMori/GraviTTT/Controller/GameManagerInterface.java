@@ -1,5 +1,4 @@
-import java.io.IOException;
-import java.util.List;
+package com.github.RiccardoRossiMori.GraviTTT.Controller;
 
 /**
  * 
@@ -16,7 +15,7 @@ public interface GameManagerInterface {
     MatrixCheckerboard getScacchiera();
 
     void cambioTurno();
-	//List<? extends Player> scegliGiocatori() throws IOException;
+	//List<? extends com.github.RiccardoRossiMori.GraviTTT.Model.Player> scegliGiocatori() throws IOException;
 	
 	
 }

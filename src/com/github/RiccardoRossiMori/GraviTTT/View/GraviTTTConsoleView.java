@@ -1,3 +1,7 @@
+package com.github.RiccardoRossiMori.GraviTTT.View;
+
+import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
+
 import java.io.*;
 import java.util.stream.Stream;
 

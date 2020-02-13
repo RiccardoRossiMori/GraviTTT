@@ -1,8 +1,10 @@
-/**
+package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  * 
  * <b> Responsabilità: </b> Memorizzare una scacchiera.
  * 
  */
+
+import com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement;
 
 /**
  * @author Riccardo Rossi Mori
@@ -14,7 +16,7 @@ public interface Checkerboard {
 
 	/**
 	 * 
-	 * Prova ad inserire un <code>Pawn</code> nella colonna <code>p</code>.
+	 * Prova ad inserire un <code>com.github.RiccardoRossiMori.GraviTTT.Model.Pawn</code> nella colonna <code>p</code>.
 	 * 
 	 * @param p
 	 * @param disco

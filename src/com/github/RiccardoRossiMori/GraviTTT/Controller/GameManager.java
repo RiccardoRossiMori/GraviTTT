@@ -1,3 +1,5 @@
+package com.github.RiccardoRossiMori.GraviTTT.Controller;
+
 import java.io.IOException;
 //import java.util.List;
 import java.util.function.Function;
@@ -61,9 +63,9 @@ public class GameManager implements GameManagerInterface {
 		return turno ? giocatore1 : giocatore2;
 	}
 
-	public void main() throws IOException, IllegalPawnPlacement {//TODO spostare in un main o in startGameDefault
+	public void main() throws IOException, IllegalPawnPlacement {//TODO spostare in un com.github.RiccardoRossiMori.GraviTTT.main o in startGameDefault
 		startGameInterface.init();
-		//TODO risolvi le prossime due instanziazioni in modo da demandare tutto a StartGameInterface (ovvero StartGameDefault)
+		//TODO risolvi le prossime due instanziazioni in modo da demandare tutto a com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameInterface (ovvero com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameDefault)
 		this.giocatore1 = startGameInterface.scegliGiocatori1("Primo");
 		this.giocatore2 = startGameInterface.scegliGiocatori1("Secondo");
 		System.out.println(this.giocatore1+" giocatore1"+ this.giocatore2+" giocatore2");
@@ -86,7 +88,7 @@ public class GameManager implements GameManagerInterface {
 	@Override
 	public MatrixCheckerboard getScacchiera() {
 		return scacchiera;
-	}//TODO verifica se lasciare la scacchiera (e relativo metodo) in questa classe o in MatrixCheckerboard
+	}//TODO verifica se lasciare la scacchiera (e relativo metodo) in questa classe o in com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard
 
 	/**
 	 * @param scacchiera the checkerboard to set

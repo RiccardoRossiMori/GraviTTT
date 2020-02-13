@@ -1,4 +1,4 @@
-/**
+package com.github.RiccardoRossiMori.GraviTTT; /**
  * 
  * <b>Responsabilità: </b>Questa eccezione viene sollevata nel momento in cui 
  * una pedina non può essere posizionata in una data colonna.

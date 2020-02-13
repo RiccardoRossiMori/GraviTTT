@@ -1,6 +1,6 @@
-/**
+package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  * 
- * <b>Responsabilità: </b>Genera un costruttore di un bot <code>RandomPlayer</code>.
+ * <b>Responsabilità: </b>Genera un costruttore di un bot <code>com.github.RiccardoRossiMori.GraviTTT.Model.RandomPlayer</code>.
  * 
  */
 

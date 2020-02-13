@@ -1,4 +1,4 @@
-/**
+package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  * 
  * <b>Responsabilità: </b>Gestire i valori delle pedine in modo da determinare se in una casella c'è una pedina e di chi sia.
  * 

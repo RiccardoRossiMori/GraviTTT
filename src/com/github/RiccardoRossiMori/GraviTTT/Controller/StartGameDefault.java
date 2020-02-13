@@ -1,12 +1,14 @@
-/**
+package com.github.RiccardoRossiMori.GraviTTT.Controller; /**
  * 
- * <b>Responsabilità: </b>Inizializzare una partita tra due <code>Player</code> ed una <code>Checkerboard</code> 
+ * <b>Responsabilità: </b>Inizializzare una partita tra due <code>com.github.RiccardoRossiMori.GraviTTT.Model.Player</code> ed una <code>com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard</code>
  * con variabili standard, ossia una scacchiera con 6 righe e 7 colonne limitata esteriormente.
  * 
  */
 
+import com.github.RiccardoRossiMori.GraviTTT.Model.*;
+import com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView;
+
 import java.io.IOException;
-import java.util.function.Function;
 
 /**
  * @author Riccardo Rossi Mori
@@ -37,10 +39,10 @@ public class StartGameDefault implements StartGameInterface{
 	}
 	/**
 	 *
-	 * Instanzia un particolare Player a seconda della stringa inserita.
-	 * Se si scrive 'bot' verrà instanziato un Player di tipo RandomPlayer, che eseguirà ogni
+	 * Instanzia un particolare com.github.RiccardoRossiMori.GraviTTT.Model.Player a seconda della stringa inserita.
+	 * Se si scrive 'bot' verrà instanziato un com.github.RiccardoRossiMori.GraviTTT.Model.Player di tipo com.github.RiccardoRossiMori.GraviTTT.Model.RandomPlayer, che eseguirà ogni
 	 * mossa casualmente, mentre se si scriverà una qualunque altra cosa verrà instanziato un
-	 * Player di tipo InteractivePlayer, ossia un giocatore Interattivo.
+	 * com.github.RiccardoRossiMori.GraviTTT.Model.Player di tipo com.github.RiccardoRossiMori.GraviTTT.Model.InteractivePlayer, ossia un giocatore Interattivo.
 	 *
 	 * @param giocatorenumerox
 	 * @return
@@ -48,7 +50,7 @@ public class StartGameDefault implements StartGameInterface{
 	 */
 	@Override
 	public Player scegliGiocatori1(String giocatorenumerox) throws IOException {
-		//List<Player> giocatori=null;
+		//List<com.github.RiccardoRossiMori.GraviTTT.Model.Player> giocatori=null;
 		String tipodigiocatorescelto; //x= vista.getStringPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
 		tipodigiocatorescelto= gameManager.vista.getStringPlayer(giocatorenumerox+" giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
 		//getPlayerFactory(x.toLowerCase());

@@ -1,3 +1,8 @@
+package com.github.RiccardoRossiMori.GraviTTT;
+
+import com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables;
+import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
+
 import java.io.IOException;
 
 public class main {

@@ -1,4 +1,4 @@
-/**
+package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  * 
  * <b>Responsabilità: </b>Gestisce la strategia di gioco di un bot.
  * 
@@ -21,7 +21,7 @@ public class RandomPlayer implements Player {
 
 	/**
 	 * 
-	 * Implementa la strategia di gioco di un bot che posiziona <code>Pawn</code> a caso
+	 * Implementa la strategia di gioco di un bot che posiziona <code>com.github.RiccardoRossiMori.GraviTTT.Model.Pawn</code> a caso
 	 * nella <code>Checkerbox</code> in uso.
 	 * @return 
 	 * 
@@ -35,7 +35,7 @@ public class RandomPlayer implements Player {
 
 	@Override
 	public String stampa() {
-		return "RandomPlayer";
+		return "com.github.RiccardoRossiMori.GraviTTT.Model.RandomPlayer";
 	}
 
 }

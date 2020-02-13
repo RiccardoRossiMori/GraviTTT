@@ -1,3 +1,7 @@
+package com.github.RiccardoRossiMori.GraviTTT.Model;
+
+import com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement;
+
 import java.util.Arrays;
 
 /**
@@ -30,10 +34,10 @@ public class MatrixCheckerboard implements Checkerboard {
 	}
 
 	/*public void stampa(){
-		toPrint((i,j) -> (CheckerboardManager.isItEmpty(i,j)?GraviTTTConsoleView.NONE:this.gameboard[i][j]==Pawn.Red?GraviTTTConsoleView.RED:GraviTTTConsoleView.GREEN));
+		toPrint((i,j) -> (com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager.isItEmpty(i,j)?com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.NONE:this.gameboard[i][j]==com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red?com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.RED:com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.GREEN));
 	}
 
-	public Character toPrint (BiFunction<Integer,Integer,Character> smacco){	//TODO Implementa la stampa della Checkerboard come si deve
+	public Character toPrint (BiFunction<Integer,Integer,Character> smacco){	//TODO Implementa la stampa della com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard come si deve
 		for (int i=0;i<dimensioni.getRow();i++){
 			brico = String.format("%3d ",(i+1));
 			for (int j=0;j<dimensioni.getColumn();j++){
@@ -76,10 +80,10 @@ public class MatrixCheckerboard implements Checkerboard {
 				i++;
 		}
 	}
-/*	public static void main(String argv[]) throws IllegalPawnPlacement {
-		CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
-		MatrixCheckerboard matrixCheckerboard = new MatrixCheckerboard(dimensioni);
-		matrixCheckerboard.putPawn(1,Pawn.Red);
+/*	public static void com.github.RiccardoRossiMori.GraviTTT.main(String argv[]) throws com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement {
+		com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables dimensioni = com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables.DEFAULT_SIZE;
+		com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard matrixCheckerboard = new com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard(dimensioni);
+		matrixCheckerboard.putPawn(1,com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red);
 		int x=matrixCheckerboard.gravity(1);
 		assert x==0: "Perfetto!";
 		System.out.println(x + " valore restituito");
@@ -109,7 +113,7 @@ public class MatrixCheckerboard implements Checkerboard {
 	/**
 	 * @return the variabiliDiGioco
 	 *//*
-	public CheckerboardVariables getVariabiliDiGioco() {
+	public com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables getVariabiliDiGioco() {
 		return dimensioni;
 	}*/
 

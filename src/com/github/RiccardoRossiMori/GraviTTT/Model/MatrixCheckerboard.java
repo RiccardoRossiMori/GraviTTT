@@ -14,21 +14,29 @@ import java.util.Arrays;
  */
 public class MatrixCheckerboard implements Checkerboard {
 
-    private Pawn[][] gameboard;
-    private int lastrow, lastcolumn;
+    public Pawn[][] getCheckerboard() {
+        return checkerboard;
+    }
+
+    private void setCheckerboard(Pawn[][] checkerboard) {
+        this.checkerboard = checkerboard;
+        for (Pawn[] row : this.checkerboard) {
+            Arrays.fill(row, Pawn.None);
+        }
+    }
+
+    private Pawn[][] checkerboard;
+    private int lastRow, lastColumn;
     //private  String brico;
     private CheckerboardVariables dimensioni;
 
     public MatrixCheckerboard(CheckerboardVariables s) {
-        this.gameboard = new Pawn[s.getColumn()][s.getRow()];
-        for (Pawn[] row : this.gameboard) {
-            Arrays.fill(row, Pawn.None);
-        }
+        this.setCheckerboard(new Pawn[s.getColumn()][s.getRow()]);
         this.setVariabiliDiGioco(s);
     }
 
     public boolean isItEmpty(int i, int j) {
-        return this.gameboard[i][j] == Pawn.None;    //TODO Deve essere qui o altrove? verifica
+        return this.checkerboard[i][j] == Pawn.None;    //TODO Deve essere qui o altrove? verifica
     }
 
 	/*public void stampa(){
@@ -53,9 +61,9 @@ public class MatrixCheckerboard implements Checkerboard {
         }
         int x = 0;
         // x=metodo che mi da la riga nella colonna
-        gameboard[x][p] = disco;
-        lastrow = x;
-        lastcolumn = p;
+        checkerboard[x][p] = disco;
+        lastRow = x;
+        lastColumn = p;
 
         //TODO controlla quì le condizioni di vincita con <code>pawnNeighbor</code>
         return vincitore(x, p);
@@ -71,8 +79,8 @@ public class MatrixCheckerboard implements Checkerboard {
     public int gravity(int column) {
         int i = 0;
         while (true) {
-            System.out.println(i + " questo è i " + column + " e questa la colonna" + gameboard[i][column] + " e questo è il valore nella casella");
-            if (gameboard[i][column] == Pawn.None) {
+            System.out.println(i + " questo è i " + column + " e questa la colonna" + checkerboard[i][column] + " e questo è il valore nella casella");
+            if (checkerboard[i][column] == Pawn.None) {
                 return i;
             } else
                 i++;
@@ -104,7 +112,7 @@ public class MatrixCheckerboard implements Checkerboard {
 
     @Override
     public int pawnNeighbor() {
-        return vicini(lastrow, lastcolumn);
+        return vicini(lastRow, lastColumn);
     }
 
 	/*
@@ -116,10 +124,10 @@ public class MatrixCheckerboard implements Checkerboard {
 	}*/
 
     /**
-     * @param variabiliDiGioco the variabiliDiGioco to set
+     * @param checkerboardVariables the checkerboardVariables to set
      */
-    private void setVariabiliDiGioco(CheckerboardVariables variabiliDiGioco) {
-        this.dimensioni = variabiliDiGioco;
+    private void setVariabiliDiGioco(CheckerboardVariables checkerboardVariables) {
+        this.dimensioni = checkerboardVariables;
     }
 
 }

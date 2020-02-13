@@ -3,9 +3,7 @@ package com.github.RiccardoRossiMori.GraviTTT.Model;
 import java.io.IOException;
 
 /**
- * 
  * <b>Responsabilità: </b>Gestisce la strategia di gioco di un <code>com.github.RiccardoRossiMori.GraviTTT.Model.Player</code>.
- * 
  */
 
 /**
@@ -13,6 +11,7 @@ import java.io.IOException;
  *
  */
 public interface Player {
-	public int strategy() throws NumberFormatException, IOException;
-	public String stampa();
+    public int strategy() throws NumberFormatException, IOException;
+
+    public String stampa();
 }

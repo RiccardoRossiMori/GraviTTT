@@ -1,7 +1,5 @@
 package com.github.RiccardoRossiMori.GraviTTT.Model; /**
- * 
  * <b>Responsabilità: </b>Fornisce dei costruttori di <code>com.github.RiccardoRossiMori.GraviTTT.Model.Player</code>.
- * 
  */
 
 /**
@@ -10,6 +8,6 @@ package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  */
 @FunctionalInterface
 public interface PlayerFactory {
-	void doSomething();
+    void doSomething();
 
 }

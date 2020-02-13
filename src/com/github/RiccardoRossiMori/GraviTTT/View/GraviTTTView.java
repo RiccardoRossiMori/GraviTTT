@@ -5,9 +5,7 @@ import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 import java.io.IOException;
 
 /**
- * 
  * <b>Responsabilità: </b>Gestisce una vista generica sul gioco.
- * 
  */
 
 /**
@@ -16,7 +14,8 @@ import java.io.IOException;
  */
 public interface GraviTTTView {
 
-	String getStringPlayer(String message) throws IOException;
-	void printCheckerboard(MatrixCheckerboard scacchiera);
+    String getStringPlayer(String message) throws IOException;
+
+    void printCheckerboard(MatrixCheckerboard scacchiera);
 
 }

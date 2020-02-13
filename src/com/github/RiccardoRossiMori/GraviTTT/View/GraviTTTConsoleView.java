@@ -2,14 +2,14 @@ package com.github.RiccardoRossiMori.GraviTTT.View;
 
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.stream.Stream;
 
 /**
- * 
- * <b>Responsabilità: </b>Gestisce una view testuale basata 
+ * <b>Responsabilità: </b>Gestisce una view testuale basata
  * su console per interagirvi in maniera testuale.
- * 
  */
 
 /**
@@ -17,39 +17,39 @@ import java.util.stream.Stream;
  *
  */
 public class GraviTTTConsoleView implements GraviTTTView {
-	public static final String RED="R";
-	public static final String GREEN="G";
-	public static final String NONE=" ";
+    public static final String RED = "R";
+    public static final String GREEN = "G";
+    public static final String NONE = " ";
 
-	BufferedReader buffer;
-	Stream<String> printer;
+    private BufferedReader buffer;
+    private Stream<String> printer;
 
-	@Override
-	public void printCheckerboard(MatrixCheckerboard scacchiera){
-		printer=Stream.of();
-		printer.forEach(p ->System.out.println(p));
+    @Override
+    public void printCheckerboard(MatrixCheckerboard scacchiera) {
+        printer = Stream.of();
+        printer.forEach(p -> System.out.println(p));
 
-	}
+    }
 
 
-	private void print(String string) {
-		// TODO Auto-generated method stub
-		printer=Stream.of(string);
-		printer.forEach(p ->System.out.println(p));
-	}
+    private void print(String string) {
+        // TODO Auto-generated method stub
+        printer = Stream.of(string);
+        printer.forEach(p -> System.out.println(p));
+    }
 
-	private String getInput() throws IOException {
-		// TODO Auto-generated method stub this(new BufferedReader(new
-		// InputStreamReader(System.in)),System.out,playerFactory1,playerFactory2);
-		buffer = new BufferedReader(new InputStreamReader(System.in));
-		return buffer.readLine();
-	}
+    private String getInput() throws IOException {
+        // TODO Auto-generated method stub this(new BufferedReader(new
+        // InputStreamReader(System.in)),System.out,playerFactory1,playerFactory2);
+        buffer = new BufferedReader(new InputStreamReader(System.in));
+        return buffer.readLine();
+    }
 
-	@Override
-	public String getStringPlayer(String message) throws IOException {
-		this.print(message);
-		return getInput();
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public String getStringPlayer(String message) throws IOException {
+        this.print(message);
+        return getInput();
+        // TODO Auto-generated method stub
+    }
 
 }

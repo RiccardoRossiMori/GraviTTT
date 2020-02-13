@@ -7,7 +7,6 @@ import com.github.RiccardoRossiMori.GraviTTT.Model.Player;
 import com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTView;
 
 import java.io.IOException;
-//import java.util.List;
 
 
 /**
@@ -33,15 +32,19 @@ public class GameManager implements GameManagerInterface {
      * TODO posizionamento di una pedina in una colonna
      * TODO implementare i player in modo da poter immettere una pedina secondo le varie strategie
      * TODO gestione eccezioni (create attraverso i test)
+     * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
      */
-    private StartGameInterface startGameInterface = new StartGameDefault();
-    private CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
-    private MatrixCheckerboard scacchiera = new MatrixCheckerboard(dimensioni);
-    private CheckerboardManager checkerboardManager = new CheckerboardManager(scacchiera);
-    private boolean winner = false, turno = true;
+    private StartGameInterface startGameInterface ;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
+    private CheckerboardManager checkerboardManager ;
+    private boolean winner , turno;
 
     public GameManager(MatrixCheckerboard matrixCheckerboard) {
-        this.setScacchiera(matrixCheckerboard);
+        this.startGameInterface = new StartGameDefault();
+        //this.dimensioni = CheckerboardVariables.DEFAULT_SIZE;//TODO controlla se puoi eliminare le due righe commentate
+        //this.setCheckerboard(matrixCheckerboard);
+        this.checkerboardManager = new CheckerboardManager(matrixCheckerboard);
+        this.winner = false;
+        this.turno = true;
     }
 
 
@@ -56,9 +59,9 @@ public class GameManager implements GameManagerInterface {
 
     /**
      *
-     * Restituisce, sotto forma di booleano, il turno del giocatore 1 o del giocatore 2.
+     * Restituisce, a seconda del turno, il giocatore uno oppure il giocatore 2.
      *
-     * @return
+     * @return giocatore1|giocatore2
      */
 
     private Player getGiocatore() {
@@ -72,31 +75,38 @@ public class GameManager implements GameManagerInterface {
         System.out.println(this.giocatore1 + " giocatore1" + this.giocatore2 + " giocatore2");
         int i = 0;
         while (/*!winner*/i < 4) {
-            //vista.printCheckerboard(scacchiera);
+            vista.printCheckerboard(checkerboardManager.getCheckerboard());//TODO stampa tabella di gioco
             //TODO stampa di chi è il turno.
             i++;
             System.out.println(this.getGiocatore() + " giocatore attuale");
-            winner = checkerboardManager.action(getGiocatore().strategy(), turno);
-            //if(!winner)	//TODO questo if è disabilitato poiché non è ancora stata implementata la vincita della partita
-            cambioTurno();
+            winner = checkerboardManager.action(getGiocatore().strategy(), turno);//TODO trova soluzione più semplice ed efficace
+            if(!winner)
+                cambioTurno();
         }
         System.out.println(getGiocatore().stampa());// sarebbe essenzialmente la stampa del giocatore vincitore
     }
 
-    /**
+    /*
      * @return the checkerboard
      */
-    @Override
-    public MatrixCheckerboard getScacchiera() {
-        return scacchiera;
-    }//TODO sposta in com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard
+ /*   @Override
+    public MatrixCheckerboard getCheckerboard() {
+        return checkerboard;
+    }//TODO sposta in com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard*/
 
-    /**
-     * @param scacchiera the checkerboard to set
+    /*
+     * @param checkerboard the checkerboard to set
      */
-    private void setScacchiera(MatrixCheckerboard scacchiera) {
-        this.scacchiera = scacchiera;
+   /* private void setCheckerboard(MatrixCheckerboard checkerboard) {
+        this.checkerboard = checkerboard;
+    }*/
+
+
+    public void setVista(GraviTTTView vista) {
+        this.vista = vista;
     }
 
-
+    public GraviTTTView getVista() {
+        return this.vista;
+    }
 }

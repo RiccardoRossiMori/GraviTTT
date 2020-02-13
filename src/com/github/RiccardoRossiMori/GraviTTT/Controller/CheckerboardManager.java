@@ -1,22 +1,20 @@
 package com.github.RiccardoRossiMori.GraviTTT.Controller;
-/**
- * <b> Responsabilit�: </b> Gestire la scacchiera (posizionare una pedina, )
- */
+
 
 import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.Pawn;
 
 /**
+ * <b> Responsabilit�: </b> Gestire la scacchiera (posizionare una pedina, )
+ *
  * @author Riccardo Rossi Mori
  *
  */
 
 public class CheckerboardManager {
-    private GameManager gameManager;
-    private MatrixCheckerboard scacchiera;
-
-	
+    //private GameManager gameManager;
+    private MatrixCheckerboard checkerboard;
 
 /*	private com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard checkerboard;
 	private com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables dimensioni= com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables.DEFAULT_SIZE;
@@ -32,8 +30,7 @@ public class CheckerboardManager {
 		this.checkerboard = new com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard(dimensioni);
 	}
 */
-
-    /**
+    /*
      *
      * Costruttore che permette di instanziare una <code>com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard</code> con <code>i</code> righe e <code>j</code> colonne
      * con il valore di <code>limitation</code> settato a <code>flag</code>, dove con true si intende che la scacchiera ha dei bordi
@@ -45,17 +42,12 @@ public class CheckerboardManager {
      * @param flag
      */
 
-    public CheckerboardManager(int i, int j, boolean flag) {
-        //	this.checkerboard = new com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard(new com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables(i, j, flag));
+    public CheckerboardManager(MatrixCheckerboard checkerboard) {
+        this.checkerboard = checkerboard;
     }
 
-
-    public CheckerboardManager(MatrixCheckerboard scacchiera) {
-        this.scacchiera = scacchiera;
-    }
-
-    public MatrixCheckerboard getScacchiera() {
-        return scacchiera;
+    public MatrixCheckerboard getCheckerboard() {
+        return checkerboard;
     }
 
     /**
@@ -72,7 +64,7 @@ public class CheckerboardManager {
         //com.github.RiccardoRossiMori.GraviTTT.GameManagerInterface.getCheckerboard().putPawn(p,com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red);
         //com.github.RiccardoRossiMori.GraviTTT.Model.Pawn disco= com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Green;
         //	checkerboard.putPawn(p, disco);
-        return turno ? scacchiera.putPawn(p, Pawn.Red) : scacchiera.putPawn(p, Pawn.Green);
+        return turno ? checkerboard.putPawn(p, Pawn.Red) : checkerboard.putPawn(p, Pawn.Green);
     }
 
 }

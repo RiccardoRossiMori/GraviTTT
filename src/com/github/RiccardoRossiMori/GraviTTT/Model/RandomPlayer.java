@@ -9,7 +9,7 @@ import java.util.Random;
  *
  */
 public class RandomPlayer implements Player {
-    Random random;
+    private Random random;
 
     public RandomPlayer(int seed) {
         random = new Random(seed);

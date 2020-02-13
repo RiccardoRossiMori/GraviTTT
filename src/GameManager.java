@@ -61,16 +61,18 @@ public class GameManager implements GameManagerInterface {
 		return turno ? giocatore1 : giocatore2;
 	}
 
-	public void main() throws IOException, IllegalPawnPlacement {
+	public void main() throws IOException, IllegalPawnPlacement {//TODO spostare in un main o in startGameDefault
 		startGameInterface.init();
 		//TODO risolvi le prossime due instanziazioni in modo da demandare tutto a StartGameInterface (ovvero StartGameDefault)
 		this.giocatore1 = startGameInterface.scegliGiocatori1("Primo");
 		this.giocatore2 = startGameInterface.scegliGiocatori1("Secondo");
+		System.out.println(this.giocatore1+" giocatore1"+ this.giocatore2+" giocatore2");
 		int i=0;
 		while (/*!winner*/i<4) {
 			//vista.printCheckerboard(scacchiera);
 			//TODO stampa di chi è il turno.
 			i++;
+			System.out.println(this.getGiocatore()+" giocatore attuale");
 			winner = checkerboardManager.action(getGiocatore().strategy(), turno);
 			//if(!winner)	//TODO questo if è disabilitato poiché non è ancora stata implementata la vincita della partita
 				cambioTurno();

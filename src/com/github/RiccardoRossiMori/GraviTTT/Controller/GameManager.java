@@ -1,5 +1,11 @@
 package com.github.RiccardoRossiMori.GraviTTT.Controller;
 
+import com.github.RiccardoRossiMori.GraviTTT.IllegalPawnPlacement;
+import com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables;
+import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
+import com.github.RiccardoRossiMori.GraviTTT.Model.Player;
+import com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTView;
+
 import java.io.IOException;
 //import java.util.List;
 import java.util.function.Function;

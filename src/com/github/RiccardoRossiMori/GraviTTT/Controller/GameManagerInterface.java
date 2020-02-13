@@ -6,6 +6,8 @@ package com.github.RiccardoRossiMori.GraviTTT.Controller;
  * 
  */
 
+import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
+
 /**
  * @author Riccardo Rossi Mori
  *

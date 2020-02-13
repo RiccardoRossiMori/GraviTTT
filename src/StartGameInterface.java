@@ -4,6 +4,8 @@
  * 
  */
 
+import java.io.IOException;
+
 /**
  * @author Riccardo Rossi Mori
  *
@@ -12,4 +14,7 @@ public interface StartGameInterface {
 	
 	void setSize(int i, int j, boolean flag);
 
+    void init() throws IOException;
+
+    Player scegliGiocatori1(String giocatorenumerox) throws IOException;
 }

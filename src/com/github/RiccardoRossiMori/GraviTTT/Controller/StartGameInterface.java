@@ -16,7 +16,7 @@ public interface StartGameInterface {
     default <T extends CheckerboardVariables> CheckerboardVariables setSize(int i, int j, boolean flag) {//TODO chiedi a qualcuno se può andare scritto così
         return new CheckerboardVariables(i, j, flag);//metodo marginale, mai utilizzato, ma comunque implementato per estensioni future
     }
-    void init() throws IOException;
+    void init(GameManager gameManager) throws IOException;
 
     Player scegliGiocatori1(String giocatorenumerox) throws IOException;
 }

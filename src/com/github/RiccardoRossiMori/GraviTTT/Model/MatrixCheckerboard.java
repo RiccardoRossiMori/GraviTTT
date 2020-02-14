@@ -3,6 +3,7 @@ package com.github.RiccardoRossiMori.GraviTTT.Model;
 import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 /**
  * <b> Responsabilità: </b> Memorizzare una scacchiera sotto forma di matrice.
@@ -10,7 +11,6 @@ import java.util.Arrays;
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public class MatrixCheckerboard implements Checkerboard {
 
@@ -27,7 +27,7 @@ public class MatrixCheckerboard implements Checkerboard {
 
     private Pawn[][] checkerboard;
     private int lastRow, lastColumn;
-    //private  String brico;
+    private String brico;
     private CheckerboardVariables dimensioni;
 
     public MatrixCheckerboard(CheckerboardVariables s) {
@@ -39,20 +39,24 @@ public class MatrixCheckerboard implements Checkerboard {
         return this.checkerboard[i][j] == Pawn.None;    //TODO Deve essere qui o altrove? verifica
     }
 
-	/*public void stampa(){
-		toPrint((i,j) -> (com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager.isItEmpty(i,j)?com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.NONE:this.gameboard[i][j]==com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red?com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.RED:com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.GREEN));
-	}
+    public void stampa() {
+        toPrint((i, j) -> (checkerboard[i][j] == Pawn.None ?
+                com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.NONE :
+                (this.checkerboard[i][j] == com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red ?
+                        com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.RED :
+                        com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.GREEN)));
+    }
 
-	public Character toPrint (BiFunction<Integer,Integer,Character> smacco){	//TODO Implementa la stampa della com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard come si deve
-		for (int i=0;i<dimensioni.getRow();i++){
-			brico = String.format("%3d ",(i+1));
-			for (int j=0;j<dimensioni.getColumn();j++){
-				brico += String.format("| %c ", smacco.apply(i, j));
-			}
-		}
-		return "";
-	}
-*/
+    public String toPrint(BiFunction<Integer, Integer, String> smacco) {    //TODO Implementa la stampa della com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard come si deve
+        for (int i = 0; i < dimensioni.getRow(); i++) {
+            brico = String.format("%3d ", (i + 1));
+            for (int j = 0; j < dimensioni.getColumn(); j++) {
+                brico += String.format("| %s ", smacco.apply(i, j));
+            }
+        }
+        return brico += "";
+    }
+
 
     @Override
     public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException {
@@ -96,7 +100,6 @@ public class MatrixCheckerboard implements Checkerboard {
 	}*/
 
     /**
-     *
      * Restituisce un intero che dice quante pedine ho di fila attorno a me.
      *
      * @param row
@@ -115,13 +118,6 @@ public class MatrixCheckerboard implements Checkerboard {
         return vicini(lastRow, lastColumn);
     }
 
-	/*
-	/**
-	 * @return the variabiliDiGioco
-	 *//*
-	public com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables getVariabiliDiGioco() {
-		return dimensioni;
-	}*/
 
     /**
      * @param checkerboardVariables the checkerboardVariables to set

@@ -47,7 +47,11 @@ public class CheckerboardManager {
     }
 
     public MatrixCheckerboard getCheckerboard() {
-        return checkerboard;
+        return this.checkerboard;
+    }
+    public String printCheckerboard(){
+        //return checkerboard.stampa();
+        return"";
     }
 
     /**

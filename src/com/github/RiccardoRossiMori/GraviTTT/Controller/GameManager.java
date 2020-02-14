@@ -69,13 +69,14 @@ public class GameManager implements GameManagerInterface {
     }
 
     public void main() throws IOException, IllegalPawnPlacementException {//TODO spostare in un com.github.RiccardoRossiMori.GraviTTT.main o in startGameDefault
-        startGameInterface.init();
+        startGameInterface.init(this);
         this.giocatore1 = startGameInterface.scegliGiocatori1("Primo");
         this.giocatore2 = startGameInterface.scegliGiocatori1("Secondo");
         System.out.println(this.giocatore1 + " giocatore1" + this.giocatore2 + " giocatore2");
         int i = 0;
         while (/*!winner*/i < 4) {
             vista.printCheckerboard(checkerboardManager.getCheckerboard());//TODO stampa tabella di gioco
+            System.out.println("ho fatto la stampa della tabella, ora il giocatore attuale /n");
             //TODO stampa di chi è il turno.
             i++;
             System.out.println(this.getGiocatore() + " giocatore attuale");

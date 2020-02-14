@@ -1,5 +1,7 @@
 package com.github.RiccardoRossiMori.GraviTTT.View;
 
+import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
+import com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 
 import java.io.BufferedReader;
@@ -21,26 +23,23 @@ public class GraviTTTConsoleView implements GraviTTTView {
     public static final String GREEN = "G";
     public static final String NONE = " ";
 
+    private MatrixCheckerboard matrixCheckerboard;
     private BufferedReader buffer;
     private Stream<String> printer;
 
     @Override
     public void printCheckerboard(MatrixCheckerboard scacchiera) {
         printer = Stream.of();
-        printer.forEach(p -> System.out.println(p));
-
+        printer.forEach(System.out::println);
     }
 
 
     private void print(String string) {
-        // TODO Auto-generated method stub
         printer = Stream.of(string);
         printer.forEach(p -> System.out.println(p));
     }
 
     private String getInput() throws IOException {
-        // TODO Auto-generated method stub this(new BufferedReader(new
-        // InputStreamReader(System.in)),System.out,playerFactory1,playerFactory2);
         buffer = new BufferedReader(new InputStreamReader(System.in));
         return buffer.readLine();
     }
@@ -49,7 +48,5 @@ public class GraviTTTConsoleView implements GraviTTTView {
     public String getStringPlayer(String message) throws IOException {
         this.print(message);
         return getInput();
-        // TODO Auto-generated method stub
     }
-
 }

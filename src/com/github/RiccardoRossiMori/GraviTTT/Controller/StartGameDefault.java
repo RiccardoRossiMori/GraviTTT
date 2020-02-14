@@ -41,8 +41,9 @@ public class StartGameDefault implements StartGameInterface {
      *
      */
     @Override
-    public void init() {// TODO Sistema variabili in modo decente
-       // gameManager = new GameManager(new MatrixCheckerboard(dimensioni));
+    public void init(GameManager gameManager) {// TODO Sistema variabili in modo decente
+        this.gameManager= gameManager;
+        //gameManager = new GameManager(new MatrixCheckerboard(dimensioni));
         gameManager.setVista(new GraviTTTConsoleView());
     }
 

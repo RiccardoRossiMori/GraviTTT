@@ -28,6 +28,11 @@ public class MatrixCheckerboard implements Checkerboard {
     private Pawn[][] checkerboard;
     private int lastRow, lastColumn;
     private String brico;
+
+    public CheckerboardVariables getDimensioni() {
+        return dimensioni;
+    }
+
     private CheckerboardVariables dimensioni;
 
     public MatrixCheckerboard(CheckerboardVariables s) {
@@ -39,8 +44,8 @@ public class MatrixCheckerboard implements Checkerboard {
         return this.checkerboard[i][j] == Pawn.None;    //TODO Deve essere qui o altrove? verifica
     }
 
-    public void stampa() {
-        toPrint((i, j) -> (checkerboard[i][j] == Pawn.None ?
+    public String stampa() {
+        return toPrint((i, j) -> (checkerboard[i][j] == Pawn.None ?
                 com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.NONE :
                 (this.checkerboard[i][j] == com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red ?
                         com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.RED :
@@ -48,11 +53,16 @@ public class MatrixCheckerboard implements Checkerboard {
     }
 
     public String toPrint(BiFunction<Integer, Integer, String> smacco) {    //TODO Implementa la stampa della com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard come si deve
-        for (int i = 0; i < dimensioni.getRow(); i++) {
-            brico = String.format("%3d ", (i + 1));
-            for (int j = 0; j < dimensioni.getColumn(); j++) {
-                brico += String.format("| %s ", smacco.apply(i, j));
+        brico = "";
+        for (int i = 0; i < dimensioni.getColumn(); i++)
+            brico += String.format("%3d ", (i));
+        brico += String.format("\n");
+        for (int j = 0; j < dimensioni.getRow(); j++) {
+            brico += String.format("%3d ", (j));
+            for (int i = 0; i < dimensioni.getColumn(); i++) {
+                brico += String.format("| %s ", smacco.apply(j, i));
             }
+            brico += String.format(" #\n");
         }
         return brico += "";
     }
@@ -63,14 +73,16 @@ public class MatrixCheckerboard implements Checkerboard {
         if (p > dimensioni.getColumn() || p < 0) {
             throw new IllegalPawnPlacementException();
         }
-        int x = 0;
+        int x = gravity(p);
         // x=metodo che mi da la riga nella colonna
-        checkerboard[x][p] = disco;
+        if(checkerboard[p][x]==Pawn.None)
+        checkerboard[p][x] = disco;
+            else throw new IllegalPawnPlacementException();
         lastRow = x;
         lastColumn = p;
 
         //TODO controlla quì le condizioni di vincita con <code>pawnNeighbor</code>
-        return vincitore(x, p);
+        return vincitore(p, x);
     }
 
     @Override
@@ -80,15 +92,16 @@ public class MatrixCheckerboard implements Checkerboard {
     }
 
     @Override
-    public int gravity(int column) {
+    public int gravity(int column) throws IllegalPawnPlacementException {
         int i = 0;
-        while (true) {
+        while (i<this.dimensioni.getRow()) {
             System.out.println(i + " questo è i " + column + " e questa la colonna" + checkerboard[i][column] + " e questo è il valore nella casella");
-            if (checkerboard[i][column] == Pawn.None) {
+            if (checkerboard[column][i] == Pawn.None) {
                 return i;
             } else
                 i++;
         }
+        throw new IllegalPawnPlacementException();
     }
 /*	public static void com.github.RiccardoRossiMori.GraviTTT.main(String argv[]) throws com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacement {
 		com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables dimensioni = com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables.DEFAULT_SIZE;

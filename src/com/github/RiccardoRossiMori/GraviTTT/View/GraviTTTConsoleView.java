@@ -28,15 +28,15 @@ public class GraviTTTConsoleView implements GraviTTTView {
     private Stream<String> printer;
 
     @Override
-    public void printCheckerboard(MatrixCheckerboard scacchiera) {
-        printer = Stream.of();
+    public void printCheckerboard(String scacchiera) {
+        printer = Stream.of(scacchiera);
         printer.forEach(System.out::println);
     }
 
 
     private void print(String string) {
         printer = Stream.of(string);
-        printer.forEach(p -> System.out.println(p));
+        printer.forEach(System.out::println);
     }
 
     private String getInput() throws IOException {

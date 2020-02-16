@@ -1,5 +1,7 @@
 package com.github.RiccardoRossiMori.GraviTTT.Model;
 
+import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
+
 import java.io.IOException;
 
 /**
@@ -11,7 +13,8 @@ import java.io.IOException;
  *
  */
 public interface Player {
-    public int strategy() throws NumberFormatException, IOException;
+
+    int strategy(CheckerboardManager checkerboardManager)throws NumberFormatException, IOException;
 
     public String stampa();
 }

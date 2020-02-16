@@ -2,6 +2,10 @@ package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  * <b>Responsabilità: </b>Gestisce la strategia di gioco di un bot.
  */
 
+import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
+import com.github.RiccardoRossiMori.GraviTTT.Controller.GameManager;
+import com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameInterface;
+
 import java.util.Random;
 
 /**
@@ -10,6 +14,7 @@ import java.util.Random;
  */
 public class RandomPlayer implements Player {
     private Random random;
+    private CheckerboardManager checkerboardManager;
 
     public RandomPlayer(int seed) {
         random = new Random(seed);
@@ -17,6 +22,10 @@ public class RandomPlayer implements Player {
 
     public RandomPlayer() {
         random = new Random();
+    }
+
+    public void setCheckerboardManager(CheckerboardManager checkerboardManager) {
+        this.checkerboardManager = checkerboardManager;
     }
 
     /**
@@ -27,15 +36,15 @@ public class RandomPlayer implements Player {
      *
      */
     @Override
-    public int strategy() {
-
+    public int strategy(CheckerboardManager checkerboardManager) {
+        this.setCheckerboardManager(checkerboardManager);
         // TODO Auto-generated method stub
-        return random.nextInt(1) * 10;
+        return random.nextInt(checkerboardManager.getCheckerboard().getDimensioni().getColumn())-1;
     }
 
     @Override
     public String stampa() {
-        return "com.github.RiccardoRossiMori.GraviTTT.Model.RandomPlayer";
+        return "RandomPlayer";
     }
 
 }

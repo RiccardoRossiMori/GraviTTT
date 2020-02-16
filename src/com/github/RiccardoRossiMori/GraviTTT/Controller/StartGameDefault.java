@@ -34,6 +34,11 @@ public class StartGameDefault implements StartGameInterface {
         return new InteractivePlayer();
     }
 
+    @Override
+    public CheckerboardManager getCheckerboardManager() {
+        return this.gameManager.getCheckerboardManager();
+    }
+
     /**
      *
      * Inizializza le variabili di gioco

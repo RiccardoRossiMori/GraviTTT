@@ -35,6 +35,11 @@ public class GameManager implements GameManagerInterface {
      * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
      */
     private StartGameInterface startGameInterface ;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
+
+   public CheckerboardManager getCheckerboardManager() {
+        return checkerboardManager;
+    }
+
     private CheckerboardManager checkerboardManager ;
     private boolean winner , turno;
 
@@ -74,16 +79,17 @@ public class GameManager implements GameManagerInterface {
         this.giocatore2 = startGameInterface.scegliGiocatori1("Secondo");
         System.out.println(this.giocatore1 + " giocatore1" + this.giocatore2 + " giocatore2");
         int i = 0;
-        while (/*!winner*/i < 4) {
-            vista.printCheckerboard(checkerboardManager.getCheckerboard());//TODO stampa tabella di gioco
+        while (/*!winner*/i < 20) {
+            vista.printCheckerboard(checkerboardManager.printCheckerboard());//TODO stampa tabella di gioco
             System.out.println("ho fatto la stampa della tabella, ora il giocatore attuale /n");
             //TODO stampa di chi è il turno.
             i++;
             System.out.println(this.getGiocatore() + " giocatore attuale");
-            winner = checkerboardManager.action(getGiocatore().strategy(), turno);//TODO trova soluzione più semplice ed efficace
-            if(!winner)
+            winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace
+          //  if(!winner)
                 cambioTurno();
         }
+        vista.printCheckerboard(checkerboardManager.printCheckerboard());//TODO refactoring codice, ho fatto copia incolla
         System.out.println(getGiocatore().stampa());// sarebbe essenzialmente la stampa del giocatore vincitore
     }
 

@@ -31,7 +31,7 @@ public interface Checkerboard {
      * @param column
      * @return
      */
-    int gravity(int column);
+    int gravity(int column) throws IllegalPawnPlacementException;
 
     /**
      *

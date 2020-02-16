@@ -16,6 +16,6 @@ public interface GraviTTTView {
 
     String getStringPlayer(String message) throws IOException;
 
-    void printCheckerboard(MatrixCheckerboard scacchiera);
+    void printCheckerboard(String scacchiera);
 
 }

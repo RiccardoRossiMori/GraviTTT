@@ -50,8 +50,8 @@ public class CheckerboardManager {
         return this.checkerboard;
     }
     public String printCheckerboard(){
-        //return checkerboard.stampa();
-        return"";
+        return this.checkerboard.stampa();
+        //return"";
     }
 
     /**

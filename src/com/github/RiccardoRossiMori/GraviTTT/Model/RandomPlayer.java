@@ -38,7 +38,6 @@ public class RandomPlayer implements Player {
     @Override
     public int strategy(CheckerboardManager checkerboardManager) {
         this.setCheckerboardManager(checkerboardManager);
-        // TODO Auto-generated method stub
         int x= random.nextInt(checkerboardManager.getCheckerboard().getDimensioni().getColumn());
         return x==0?x:x-1;
     }

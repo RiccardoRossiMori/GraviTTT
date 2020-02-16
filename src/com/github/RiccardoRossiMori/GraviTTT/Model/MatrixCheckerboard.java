@@ -57,7 +57,7 @@ public class MatrixCheckerboard implements Checkerboard {
         for (int i = 0; i < dimensioni.getColumn(); i++)
             brico += String.format("%3d ", (i+1));
         brico += String.format("\n");
-        for (int j = 0; j < dimensioni.getRow(); j++) {
+        for (int j = dimensioni.getRow()-1; j >= 0; j--) {
             brico += String.format("%3d ", (j+1));
             for (int i = 0; i < dimensioni.getColumn(); i++) {
                 brico += String.format("| %s ", smacco.apply(j, i));

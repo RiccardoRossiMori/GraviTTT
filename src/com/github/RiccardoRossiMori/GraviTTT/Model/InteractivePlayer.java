@@ -28,7 +28,6 @@ public class InteractivePlayer implements Player {
      */
     @Override
     public int strategy(CheckerboardManager checkerboardManager) throws NumberFormatException, IOException {
-        // TODO Auto-generated method stub
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         int colonna = Integer.parseInt(read.readLine())-1;//TODO controlla se è legittima questa cosa
         return colonna;

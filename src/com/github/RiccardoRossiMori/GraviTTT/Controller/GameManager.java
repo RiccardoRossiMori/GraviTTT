@@ -25,9 +25,6 @@ public class GameManager implements GameManagerInterface {
     private Player giocatore1, giocatore2;
     /*
      * TODO Implementa le condizioni di vincita
-     * TODO definisci un flusso di computazione (scrivi i metodi senza elaborare troppo)
-     * TODO posizionamento di una pedina in una colonna
-     * TODO implementare i player in modo da poter immettere una pedina secondo le varie strategie
      * TODO gestione eccezioni (create attraverso i test)
      * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
      */
@@ -77,11 +74,11 @@ public class GameManager implements GameManagerInterface {
         System.out.println(this.giocatore1 + " giocatore1" + this.giocatore2 + " giocatore2");
         int i = 0;
         while (/*!winner*/i < 20) {
-            vista.printCheckerboard(checkerboardManager.printCheckerboard());//TODO stampa tabella di gioco
+            vista.printCheckerboard(checkerboardManager.printCheckerboard());
             //TODO stampa di chi è il turno.
             i++;
             System.out.println( "Ora è il turno del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
-            winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace
+            winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace (?)
           //  if(!winner)
                 cambioTurno();
         }

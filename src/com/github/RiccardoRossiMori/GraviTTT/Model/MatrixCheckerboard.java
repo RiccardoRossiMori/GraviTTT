@@ -45,20 +45,20 @@ public class MatrixCheckerboard implements Checkerboard {
     }
 
     public String stampa() {
-        return toPrint((i, j) -> (checkerboard[i][j] == Pawn.None ?
+        return toPrint((j, i) -> (checkerboard[i][j] == Pawn.None ?
                 com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.NONE :
                 (this.checkerboard[i][j] == com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red ?
                         com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.RED :
                         com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.GREEN)));
     }
 
-    public String toPrint(BiFunction<Integer, Integer, String> smacco) {    //TODO Implementa la stampa della com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard come si deve
-        brico = "";
+    public String toPrint(BiFunction<Integer, Integer, String> smacco) {
+        brico = "    ";//TODO fai una spaziatura decente e non a caso con n spazi
         for (int i = 0; i < dimensioni.getColumn(); i++)
-            brico += String.format("%3d ", (i));
+            brico += String.format("%3d ", (i+1));
         brico += String.format("\n");
         for (int j = 0; j < dimensioni.getRow(); j++) {
-            brico += String.format("%3d ", (j));
+            brico += String.format("%3d ", (j+1));
             for (int i = 0; i < dimensioni.getColumn(); i++) {
                 brico += String.format("| %s ", smacco.apply(j, i));
             }
@@ -95,7 +95,7 @@ public class MatrixCheckerboard implements Checkerboard {
     public int gravity(int column) throws IllegalPawnPlacementException {
         int i = 0;
         while (i<this.dimensioni.getRow()) {
-            System.out.println(i + " questo è i " + column + " e questa la colonna" + checkerboard[i][column] + " e questo è il valore nella casella");
+            //System.out.println(i + " questo è i " + column + " e questa la colonna" + checkerboard[column][i] + " e questo è il valore nella casella");
             if (checkerboard[column][i] == Pawn.None) {
                 return i;
             } else

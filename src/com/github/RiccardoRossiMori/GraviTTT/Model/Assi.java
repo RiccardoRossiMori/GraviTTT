@@ -2,62 +2,18 @@ package com.github.RiccardoRossiMori.GraviTTT.Model;
 
 public enum Assi {
     Verticale, Orizzontale, Diagonale_sx, Diagonale_dx;
-    //TODO implementa in modo più decente tutta la classe
-    public int getSteps(){
+    public Orientamento dammiLaDirezione(boolean deviatoio){
         switch (this){
-            case Verticale:{
-                getForwardHeight();
-                getBackwardHeight();
-            }
-            case Orizzontale:{
-                getForwardWidth();
-                getBackwardWidth();
-            }
-            case Diagonale_dx:{
-                {
-                    getForwardWidth();
-                    getForwardHeight();
-                }
-                {
-                    getBackwardWidth();
-                    getBackwardHeight();
-                }
-            }
-            case Diagonale_sx:{
-                {
-                    getBackwardWidth();
-                    getForwardHeight();
-                }
-                {
-                    getBackwardHeight();
-                    getForwardWidth();
-                }
-
-            }
-            default:{
-
-            }
-
+            case Verticale:
+                return deviatoio?Orientamento.Nord:Orientamento.Sud;
+            case Orizzontale:
+                return deviatoio?Orientamento.Est:Orientamento.Ovest;
+            case Diagonale_dx:
+                return deviatoio?Orientamento.Nord_Est:Orientamento.Sud_Ovest;
+            case Diagonale_sx:
+                return  deviatoio?Orientamento.Nord_Ovest:Orientamento.Sud_Est;
+            default:
+                return null;
         }
-    return 0;}
-
-    public int getForwardHeight(){
-        return 0;
     }
-    public int getBackwardHeight(){
-        return 0;
-    }
-    public int getForwardWidth(){
-        return 0;
-    }
-    public int getBackwardWidth(){
-        return 0;
-    }
-
-
-
-
-
 }
-
-

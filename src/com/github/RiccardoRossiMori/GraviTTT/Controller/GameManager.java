@@ -27,6 +27,7 @@ public class GameManager implements GameManagerInterface {
      * TODO Implementa le condizioni di vincita
      * TODO gestione eccezioni (create attraverso i test)
      * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
+     * TODO implementa partite continue
      */
     private StartGameInterface startGameInterface ;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
 

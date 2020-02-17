@@ -3,6 +3,7 @@ package com.github.RiccardoRossiMori.GraviTTT.Model;
 import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
 
 import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.function.BiFunction;
 
 /**
@@ -28,6 +29,7 @@ public class MatrixCheckerboard implements Checkerboard {
     private Pawn[][] checkerboard;
     private int lastRow, lastColumn;
     private String brico;
+    private EnumSet<Assi> direzioni= EnumSet.allOf(Assi.class);
 
     public CheckerboardVariables getDimensioni() {
         return dimensioni;
@@ -87,8 +89,13 @@ public class MatrixCheckerboard implements Checkerboard {
 
     @Override
     public boolean vincitore(int i, int j) {
+        //TODO implementa il metodo
+        boolean papparapa=false;
 
-        return true;
+        //if(){}
+
+
+        return papparapa;
     }
 
     @Override

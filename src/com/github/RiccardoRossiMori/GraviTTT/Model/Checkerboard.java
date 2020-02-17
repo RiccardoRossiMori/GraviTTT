@@ -20,7 +20,7 @@ public interface Checkerboard {
      * @throws IllegalPawnPlacementException
      * @return
      */
-    public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException;
+    boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException;
 
     boolean vincitore(int i, int j);
 
@@ -41,5 +41,5 @@ public interface Checkerboard {
      *
      * @return
      */
-    int pawnNeighbor();
+    int pawnNeighbor(Orientamento x);
 }

@@ -76,33 +76,26 @@ public class MatrixCheckerboard implements Checkerboard {
             throw new IllegalPawnPlacementException();
         }
         int x = gravity(p);
-        // x=metodo che mi da la riga nella colonna
         if(checkerboard[p][x]==Pawn.None)
         checkerboard[p][x] = disco;
             else throw new IllegalPawnPlacementException();
         lastRow = x;
         lastColumn = p;
-
-        //TODO controlla quì le condizioni di vincita con <code>pawnNeighbor</code>
         return vincitore(p, x);
     }
 
     @Override
     public boolean vincitore(int i, int j) {
-        //TODO implementa il metodo
-        boolean papparapa=false;
-
-        //if(){}
-
-
-        return papparapa;
+        for (Assi asse:direzioni) {
+            if ((this.pawnNeighbor(asse.dammiLaDirezione(true))+(this.pawnNeighbor(asse.dammiLaDirezione(false))-1))>=4)return true;
+        }
+        return false;
     }
 
     @Override
     public int gravity(int column) throws IllegalPawnPlacementException {
         int i = 0;
         while (i<this.dimensioni.getRow()) {
-            //System.out.println(i + " questo è i " + column + " e questa la colonna" + checkerboard[column][i] + " e questo è il valore nella casella");
             if (checkerboard[column][i] == Pawn.None) {
                 return i;
             } else
@@ -124,18 +117,21 @@ public class MatrixCheckerboard implements Checkerboard {
      *
      * @param row
      * @param column
+     * @param x
      * @return
      */
 
-    private int vicini(int row, int column) {
-        //TODO Implementa il metodo, cambia il tipo di ritorno.
-
+    private int vicini(int row, int column, Orientamento x) {
+        if (row<0||row>=dimensioni.getRow()||column<0||column>=dimensioni.getColumn())
+            return 0;
+        if(checkerboard[lastColumn][lastRow]==checkerboard[column][row])
+            return vicini(row+x.rowMove(),column+x.columnMove(),x)+1;
         return 0;
     }
 
     @Override
-    public int pawnNeighbor() {
-        return vicini(lastRow, lastColumn);
+    public int pawnNeighbor(Orientamento x) {
+        return vicini(lastRow, lastColumn,x);
     }
 
 

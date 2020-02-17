@@ -24,9 +24,11 @@ public class GameManager implements GameManagerInterface {
     private GraviTTTView vista;
     private Player giocatore1, giocatore2;
     /*
-     * TODO Implementa le condizioni di vincita
-     * TODO gestione eccezioni (create attraverso i test)
+     * TODO refactoring del codice, sposta il main e tutto ciò che non è compito del GameManager
+     * TODO lanciare e gestire le eccezioni dove necessario
      * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
+     * TODO Creare Test per le diverse parti di codice
+     * TODO gestire IllegalInputException (voglio int, mi danno char o String)
      * TODO implementa partite continue
      */
     private StartGameInterface startGameInterface ;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
@@ -72,19 +74,19 @@ public class GameManager implements GameManagerInterface {
         startGameInterface.init(this);
         this.giocatore1 = startGameInterface.scegliGiocatori1("Primo");
         this.giocatore2 = startGameInterface.scegliGiocatori1("Secondo");
-        System.out.println(this.giocatore1 + " giocatore1" + this.giocatore2 + " giocatore2");
-        int i = 0;
-        while (/*!winner*/i < 20) {
+        while (!winner) {
             vista.printCheckerboard(checkerboardManager.printCheckerboard());
-            //TODO stampa di chi è il turno.
-            i++;
             System.out.println( "Ora è il turno del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
             winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace (?)
-          //  if(!winner)
+            if(!winner)
                 cambioTurno();
         }
         vista.printCheckerboard(checkerboardManager.printCheckerboard());//TODO refactoring codice, ho fatto copia incolla
-        System.out.println(getGiocatore().stampa());// sarebbe essenzialmente la stampa del giocatore vincitore
+        if (getGiocatore() == giocatore1) {
+            System.out.println("Ha vinto il primo giocatore");
+        } else {
+            System.out.println("Ha vinto il secondo giocatore");
+        }
     }
 
     /*

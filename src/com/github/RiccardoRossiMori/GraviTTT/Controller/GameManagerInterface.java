@@ -11,6 +11,7 @@ package com.github.RiccardoRossiMori.GraviTTT.Controller;
  *
  */
 public interface GameManagerInterface {
+    //TODO inserisci più metodi quì da cui dipendere per le estensioni
 
    // MatrixCheckerboard getScacchiera();
 

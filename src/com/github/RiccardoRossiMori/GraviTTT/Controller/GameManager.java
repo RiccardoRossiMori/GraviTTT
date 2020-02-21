@@ -7,6 +7,7 @@ import com.github.RiccardoRossiMori.GraviTTT.Model.Player;
 import com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTView;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 
 /**
@@ -24,12 +25,15 @@ public class GameManager implements GameManagerInterface {
     private GraviTTTView vista;
     private Player giocatore1, giocatore2;
     /*
+     * TODO verifica di rispettare i principi "L" ed "I" dei principi SOLID
+     * TODO implementa il codice in RandomPlayerFactory e InteractivePlayerFactory se necessario (controlla)
      * TODO refactoring del codice, sposta il main e tutto ciò che non è compito del GameManager
      * TODO lanciare e gestire le eccezioni dove necessario
      * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
      * TODO Creare Test per le diverse parti di codice
      * TODO gestire IllegalInputException (voglio int, mi danno char o String)
      * TODO implementa partite continue
+     * TODO possibile implementazione del design pattern "strategy" per le strategie dei palyer... per ora rimane ipotesi
      */
     private StartGameInterface startGameInterface ;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
 

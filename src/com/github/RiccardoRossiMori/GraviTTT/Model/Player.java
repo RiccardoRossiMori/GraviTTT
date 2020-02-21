@@ -16,5 +16,5 @@ public interface Player {
 
     int strategy(CheckerboardManager checkerboardManager)throws NumberFormatException, IOException;
 
-    public String stampa();
+    String stampa();//TODO verifica se eliminare il metodo
 }

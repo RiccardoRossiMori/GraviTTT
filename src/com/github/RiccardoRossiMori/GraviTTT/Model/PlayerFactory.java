@@ -8,6 +8,6 @@ package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  */
 @FunctionalInterface
 public interface PlayerFactory {
-    void doSomething();
+    void doSomething();//TODO verifica se eliminare il metodo
 
 }

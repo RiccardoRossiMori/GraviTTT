@@ -74,7 +74,9 @@ public class GameManager implements GameManagerInterface {
         return turno ? giocatore1 : giocatore2;
     }
 
+    //TODO refactoring in modo da ridurre le linee di codice e lasciare a questo metodo una sola responsabilità.
     public void main() throws IOException, IllegalPawnPlacementException {//TODO spostare in un com.github.RiccardoRossiMori.GraviTTT.main o in startGameDefault
+        //boolean x=true;
         startGameInterface.init(this);
         this.giocatore1 = startGameInterface.scegliGiocatori1("Primo");
         this.giocatore2 = startGameInterface.scegliGiocatori1("Secondo");
@@ -91,6 +93,8 @@ public class GameManager implements GameManagerInterface {
         } else {
             System.out.println("Ha vinto il secondo giocatore");
         }
+        //TODO chiedi se si vuole giocare un'altra partita.
+        //return x;
     }
 
     /*

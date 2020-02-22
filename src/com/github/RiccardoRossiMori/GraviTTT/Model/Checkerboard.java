@@ -42,4 +42,8 @@ public interface Checkerboard {
      * @return
      */
     int pawnNeighbor(Orientamento x);
+
+    String stampa();
+
+    CheckerboardVariables getDimensioni();
 }

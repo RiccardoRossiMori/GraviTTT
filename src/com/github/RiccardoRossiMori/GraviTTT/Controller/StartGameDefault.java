@@ -65,7 +65,7 @@ public class StartGameDefault implements StartGameInterface {
      * @throws IOException
      */
     @Override
-    public Player scegliGiocatori1(String giocatorenumerox) throws IOException {
+    public Player scegliGiocatori(String giocatorenumerox) throws IOException {
         //List<com.github.RiccardoRossiMori.GraviTTT.Model.Player> giocatori=null;
         String tipodigiocatorescelto; //x= vista.getStringPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
         tipodigiocatorescelto = gameManager.getVista().getStringPlayer(giocatorenumerox + " giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");

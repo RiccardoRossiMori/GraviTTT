@@ -31,6 +31,7 @@ public class MatrixCheckerboard implements Checkerboard {
     private String brico;
     private EnumSet<Assi> direzioni= EnumSet.allOf(Assi.class);
 
+    @Override
     public CheckerboardVariables getDimensioni() {
         return dimensioni;
     }
@@ -46,6 +47,7 @@ public class MatrixCheckerboard implements Checkerboard {
         return this.checkerboard[i][j] == Pawn.None;    //TODO Deve essere qui o altrove? verifica
     }
 
+    @Override
     public String stampa() {
         return toPrint((j, i) -> (checkerboard[i][j] == Pawn.None ?
                 com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.NONE :
@@ -129,7 +131,7 @@ public class MatrixCheckerboard implements Checkerboard {
         return 0;
     }
 
-    @Override
+   @Override
     public int pawnNeighbor(Orientamento x) {
         return vicini(lastRow, lastColumn,x);
     }

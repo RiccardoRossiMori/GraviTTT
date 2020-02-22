@@ -20,5 +20,5 @@ public interface StartGameInterface {
     }
     void init(GameManager gameManager) throws IOException;
 
-    Player scegliGiocatori1(String giocatorenumerox) throws IOException;
+    Player scegliGiocatori(String giocatorenumerox) throws IOException;
 }

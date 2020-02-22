@@ -6,6 +6,10 @@ package com.github.RiccardoRossiMori.GraviTTT.Controller;
 
 //import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 
+import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
+
+import java.io.IOException;
+
 /**
  * @author Riccardo Rossi Mori
  *
@@ -16,6 +20,8 @@ public interface GameManagerInterface {
    // MatrixCheckerboard getScacchiera();
 
     void cambioTurno();
+
+    void play() throws IOException, IllegalPawnPlacementException;
     //List<? extends com.github.RiccardoRossiMori.GraviTTT.Model.Player> scegliGiocatori() throws IOException;
 
 

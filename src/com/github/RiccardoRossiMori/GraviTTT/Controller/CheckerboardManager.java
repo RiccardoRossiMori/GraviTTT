@@ -2,6 +2,7 @@ package com.github.RiccardoRossiMori.GraviTTT.Controller;
 
 
 import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
+import com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.Pawn;
 
@@ -14,7 +15,7 @@ import com.github.RiccardoRossiMori.GraviTTT.Model.Pawn;
 
 public class CheckerboardManager {
     //private GameManager gameManager;
-    private MatrixCheckerboard checkerboard;
+    private Checkerboard checkerboard;
 
 /*	private com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard checkerboard;
 	private com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables dimensioni= com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables.DEFAULT_SIZE;
@@ -42,14 +43,14 @@ public class CheckerboardManager {
      * @param flag
      */
 
-    public CheckerboardManager(MatrixCheckerboard checkerboard) {
+    public CheckerboardManager(Checkerboard checkerboard) {
         this.checkerboard = checkerboard;
     }
 
-    public MatrixCheckerboard getCheckerboard() {
+    public Checkerboard getCheckerboard() {
         return this.checkerboard;
     }
-    public String printCheckerboard(){
+    public String toPrint(){
         return this.checkerboard.stampa();
         //return"";
     }

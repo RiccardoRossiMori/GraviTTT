@@ -14,6 +14,8 @@ import java.io.IOException;
  */
 public interface GraviTTTView {
 
+    void printMessage(String message);
+
     String getStringPlayer(String message) throws IOException;
 
     void printCheckerboard(String scacchiera);

@@ -33,6 +33,11 @@ public class GraviTTTConsoleView implements GraviTTTView {
         printer.forEach(System.out::println);
     }
 
+    @Override
+    public void printMessage(String message){
+        this.print(message);
+    }
+
 
     private void print(String string) {
         printer = Stream.of(string);

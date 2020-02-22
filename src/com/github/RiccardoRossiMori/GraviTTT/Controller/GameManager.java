@@ -78,11 +78,10 @@ public class GameManager implements GameManagerInterface {
         //while (partita){
         //gestione partita
         this.partita();
-        //stampa giocatore
+        //stampa vincitore
         this.conclusione();
         //voglioGiocareAncora?partita=true:partita=false;}
         //TODO chiedi se si vuole giocare un'altra partita.
-        //return x;
     }
 
     private void start() throws IOException {
@@ -93,12 +92,16 @@ public class GameManager implements GameManagerInterface {
 
     private void partita() throws IOException, IllegalPawnPlacementException {
         this.turno = true;
-        vista.printCheckerboard(checkerboardManager.toPrint());//prima stampa della tabella di gioco prima di iniziare.//TODO refactoring codice, ho fatto copia incolla
+        this.status();
         while (!winner) {
             this.sendMessage( "Ora è il turno del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
-            winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace (?)
-            //TODO se viene lanciata l'eccezione IllegalPawnPlacementException bisogna richiedere nuovamente la mossa, non chiudere tutto!
-            vista.printCheckerboard(checkerboardManager.toPrint());
+            try {
+                winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace (?)
+            }catch (IllegalPawnPlacementException i){
+                this.sendMessage("Errore, colonna non valida!");
+                continue;
+            }
+            this.status();
             if(!winner)
                 cambioTurno();
         }
@@ -111,6 +114,11 @@ public class GameManager implements GameManagerInterface {
     private void sendMessage(String string){//TODO creare un metodo public in interface per ereditare il metodo obbligatoriamente
         vista.printMessage(string);
     }
+
+    private void status(){
+        vista.printCheckerboard(checkerboardManager.toPrint());
+    }
+
 
     public void setVista(GraviTTTView vista) {
         this.vista = vista;

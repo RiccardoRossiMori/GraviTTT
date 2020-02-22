@@ -1,16 +1,11 @@
 package com.github.RiccardoRossiMori.GraviTTT;
 
 import com.github.RiccardoRossiMori.GraviTTT.Controller.GameManager;
-import com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameDefault;
-import com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameInterface;
 import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
 import com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
-import com.sun.management.GarbageCollectionNotificationInfo;
-import sun.management.GarbageCollectionNotifInfoCompositeData;
 
 import java.io.IOException;
-import java.lang.management.GarbageCollectorMXBean;
 
 public class Main {
     public static void main(String argv[]) throws IOException, IllegalPawnPlacementException {

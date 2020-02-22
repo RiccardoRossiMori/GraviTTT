@@ -1,13 +1,11 @@
 package com.github.RiccardoRossiMori.GraviTTT.Controller;
 
 import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
-import com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.Player;
 import com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTView;
 
 import java.io.IOException;
-import java.util.function.Consumer;
 
 
 /**
@@ -50,7 +48,6 @@ public class GameManager implements GameManagerInterface {
         //this.setCheckerboard(matrixCheckerboard);
         this.checkerboardManager = new CheckerboardManager(matrixCheckerboard);
         this.winner = false;
-        this.turno = true;
     }
 
 
@@ -74,8 +71,6 @@ public class GameManager implements GameManagerInterface {
         return turno ? giocatore1 : giocatore2;
     }
 
-    //TODO refactoring in modo da ridurre le linee di codice e lasciare a questo metodo una sola responsabilità.
-        //boolean x=true;
     @Override
     public void play() throws IOException, IllegalPawnPlacementException {
         //inizializzazione partita
@@ -105,30 +100,8 @@ public class GameManager implements GameManagerInterface {
             if(!winner)
                 cambioTurno();
         }
-        vista.printCheckerboard(checkerboardManager.printCheckerboard());//TODO refactoring codice, ho fatto copia incolla
-        if (getGiocatore() == giocatore1) {
-            System.out.println("Ha vinto il primo giocatore");
-        } else {
-            System.out.println("Ha vinto il secondo giocatore");
-        }
-        //TODO chiedi se si vuole giocare un'altra partita.
-        //return x;
     }
 
-    /*
-     * @return the checkerboard
-     */
- /*   @Override
-    public MatrixCheckerboard getCheckerboard() {
-        return checkerboard;
-    }//TODO sposta in com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard*/
-
-    /*
-     * @param checkerboard the checkerboard to set
-     */
-   /* private void setCheckerboard(MatrixCheckerboard checkerboard) {
-        this.checkerboard = checkerboard;
-    }*/
     private void conclusione(){
         this.sendMessage( "La vittoria è del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
     }

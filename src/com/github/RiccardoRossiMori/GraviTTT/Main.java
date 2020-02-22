@@ -20,5 +20,6 @@ public class Main {
         GameManager game = new GameManager(new MatrixCheckerboard(dimensioni));
        // starter=null;//TODO controlla se questa variabile crea problemi, gli viene assegnato null prima dell'avvio della partita per evitare riferimenti inaspettati e liberare memoria
         game.main();
+        //while (game.main());
     }
 }

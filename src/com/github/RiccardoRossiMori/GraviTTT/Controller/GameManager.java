@@ -78,13 +78,29 @@ public class GameManager implements GameManagerInterface {
         //boolean x=true;
     @Override
     public void play() throws IOException, IllegalPawnPlacementException {
+        //inizializzazione partita
+        this.start();
+        //while (partita){
+        //gestione partita
+        this.partita();
+        //stampa giocatore
+        this.conclusione();
+        //voglioGiocareAncora?partita=true:partita=false;}
+        //TODO chiedi se si vuole giocare un'altra partita.
+        //return x;
+    }
+
+    private void start() throws IOException {
         startGameInterface.init(this);
         this.giocatore1 = startGameInterface.scegliGiocatori("Primo");
         this.giocatore2 = startGameInterface.scegliGiocatori("Secondo");
     }
+
+    private void partita() throws IOException, IllegalPawnPlacementException {
+        this.turno = true;
+        vista.printCheckerboard(checkerboardManager.toPrint());//prima stampa della tabella di gioco prima di iniziare.//TODO refactoring codice, ho fatto copia incolla
         while (!winner) {
-            vista.printCheckerboard(checkerboardManager.printCheckerboard());
-            System.out.println( "Ora è il turno del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
+            this.sendMessage( "Ora è il turno del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
             winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace (?)
             if(!winner)
                 cambioTurno();
@@ -113,7 +129,13 @@ public class GameManager implements GameManagerInterface {
    /* private void setCheckerboard(MatrixCheckerboard checkerboard) {
         this.checkerboard = checkerboard;
     }*/
+    private void conclusione(){
+        this.sendMessage( "La vittoria è del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
+    }
 
+    private void sendMessage(String string){//TODO creare un metodo public in interface per ereditare il metodo obbligatoriamente
+        vista.printMessage(string);
+    }
 
     public void setVista(GraviTTTView vista) {
         this.vista = vista;

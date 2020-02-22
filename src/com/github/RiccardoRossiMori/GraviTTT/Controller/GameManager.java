@@ -97,6 +97,8 @@ public class GameManager implements GameManagerInterface {
         while (!winner) {
             this.sendMessage( "Ora è il turno del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
             winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace (?)
+            //TODO se viene lanciata l'eccezione IllegalPawnPlacementException bisogna richiedere nuovamente la mossa, non chiudere tutto!
+            vista.printCheckerboard(checkerboardManager.toPrint());
             if(!winner)
                 cambioTurno();
         }

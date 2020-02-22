@@ -33,7 +33,7 @@ public class GameManager implements GameManagerInterface {
      * TODO Creare Test per le diverse parti di codice
      * TODO gestire IllegalInputException (voglio int, mi danno char o String)
      * TODO implementa partite continue
-     * TODO possibile implementazione del design pattern "strategy" per le strategie dei palyer... per ora rimane ipotesi
+     * TODO possibile implementazione del design pattern "strategy" per le strategie dei player... per ora rimane ipotesi
      */
     private StartGameInterface startGameInterface ;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
 
@@ -75,11 +75,13 @@ public class GameManager implements GameManagerInterface {
     }
 
     //TODO refactoring in modo da ridurre le linee di codice e lasciare a questo metodo una sola responsabilità.
-    public void main() throws IOException, IllegalPawnPlacementException {//TODO spostare in un com.github.RiccardoRossiMori.GraviTTT.main o in startGameDefault
         //boolean x=true;
+    @Override
+    public void play() throws IOException, IllegalPawnPlacementException {
         startGameInterface.init(this);
-        this.giocatore1 = startGameInterface.scegliGiocatori1("Primo");
-        this.giocatore2 = startGameInterface.scegliGiocatori1("Secondo");
+        this.giocatore1 = startGameInterface.scegliGiocatori("Primo");
+        this.giocatore2 = startGameInterface.scegliGiocatori("Secondo");
+    }
         while (!winner) {
             vista.printCheckerboard(checkerboardManager.printCheckerboard());
             System.out.println( "Ora è il turno del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");

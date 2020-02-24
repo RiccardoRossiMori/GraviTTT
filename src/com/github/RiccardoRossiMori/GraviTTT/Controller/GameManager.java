@@ -75,6 +75,12 @@ public class GameManager implements GameManagerInterface {
         return turno ? giocatore1 : giocatore2;
     }
 
+    /**
+     * Gestisce una o più partite consecutive tra due giocatori.
+     *
+     * @throws IOException
+     * @throws IllegalPawnPlacementException
+     */
     @Override
     public void play() throws IOException, IllegalPawnPlacementException {
         //inizializzazione partita
@@ -88,13 +94,23 @@ public class GameManager implements GameManagerInterface {
         //TODO chiedi se si vuole giocare un'altra partita.
     }
 
+    /**
+     * Richiede ed instanzia i due giocatori per la partita.
+     *
+     * @throws IOException
+     */
     private void start() throws IOException {
         startGameInterface.init(this);
         this.giocatore1 = startGameInterface.scegliGiocatori("Primo");
         this.giocatore2 = startGameInterface.scegliGiocatori("Secondo");
     }
 
-    private void partita() throws IOException, IllegalPawnPlacementException {
+    /**
+     * Gestisce la singola partita cedendo il turno ad un giocatore o all'altro.
+     *
+     * @throws IOException
+     */
+    private void partita() throws IOException {
         this.turno = true;
         this.status();
         while (!winner) {
@@ -115,10 +131,18 @@ public class GameManager implements GameManagerInterface {
         this.sendMessage("La vittoria è del " + (this.turno ? "giocatore uno " : "giocatore due") + "\n");
     }
 
+    /**
+     * Presa una stringa in ingresso, la invia alla view per stamparla a video.
+     *
+     * @param string
+     */
     private void sendMessage(String string) {//TODO creare un metodo public in interface per ereditare il metodo obbligatoriamente
         vista.printMessage(string);
     }
 
+    /**
+     * Ha il compito di chiedere alla view una stampa aggiornata della tabella di gioco.
+     */
     private void status() {
         vista.printCheckerboard(checkerboardManager.toPrint());
     }

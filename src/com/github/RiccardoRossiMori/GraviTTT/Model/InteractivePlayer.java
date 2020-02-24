@@ -15,7 +15,6 @@ import java.io.InputStreamReader;
  *
  */
 public class InteractivePlayer implements Player {
-
     /**
      *
      * Implementa la strategia di gioco di un giocatore interattivo, per tanto

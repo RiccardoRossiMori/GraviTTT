@@ -14,7 +14,6 @@ import com.github.RiccardoRossiMori.GraviTTT.Model.Pawn;
  */
 
 public class CheckerboardManager {
-    //private GameManager gameManager;
     private Checkerboard checkerboard;
 
 /*	private com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard checkerboard;
@@ -50,9 +49,14 @@ public class CheckerboardManager {
     public Checkerboard getCheckerboard() {
         return this.checkerboard;
     }
+
+    /**
+     * Restituisce una stringa che verrà poi data come parametro alla view per essere stampata.
+     *
+     * @return
+     */
     public String toPrint(){
         return this.checkerboard.stampa();
-        //return"";
     }
 
     /**

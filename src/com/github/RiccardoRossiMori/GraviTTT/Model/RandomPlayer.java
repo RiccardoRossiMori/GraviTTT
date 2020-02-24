@@ -24,6 +24,12 @@ public class RandomPlayer implements Player {
         random = new Random();
     }
 
+    /**
+     * Memorizza al suo interno un CheckerboardManager per poter interagire
+     * con la tabella di gioco.
+     *
+     * @param checkerboardManager
+     */
     public void setCheckerboardManager(CheckerboardManager checkerboardManager) {
         this.checkerboardManager = checkerboardManager;
     }
@@ -42,9 +48,9 @@ public class RandomPlayer implements Player {
         return x==0?x:x-1;
     }
 
-    @Override
+  /*  @Override
     public String stampa() {
         return "RandomPlayer";
-    }
+    }*/
 
 }

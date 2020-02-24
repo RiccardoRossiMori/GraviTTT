@@ -1,7 +1,17 @@
 package com.github.RiccardoRossiMori.GraviTTT.Model;
 
+/**
+ * Responsabilità: deve indicare lungo quali assi controllare.
+ */
 public enum Assi {
     Verticale, Orizzontale, Diagonale_sx, Diagonale_dx;
+
+    /**
+     * Restituisce due direzioni a seconda del valore di deviatoio.
+     *
+     * @param deviatoio
+     * @return
+     */
     public Orientamento dammiLaDirezione(boolean deviatoio){
         switch (this){
             case Verticale:

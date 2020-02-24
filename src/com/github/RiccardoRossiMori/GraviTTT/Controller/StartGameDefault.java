@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class StartGameDefault implements StartGameInterface {
 
-    private CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
+    //private CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
     private GameManager gameManager;
 
     /**
@@ -34,10 +34,10 @@ public class StartGameDefault implements StartGameInterface {
         return new InteractivePlayer();
     }
 
-    @Override
+   /* @Override
     public CheckerboardManager getCheckerboardManager() {
         return this.gameManager.getCheckerboardManager();
-    }
+    }*/
 
     /**
      * Inizializza le variabili di gioco

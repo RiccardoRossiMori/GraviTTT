@@ -1,6 +1,7 @@
 package com.github.RiccardoRossiMori.GraviTTT.Model;
 
 import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -31,6 +32,11 @@ public class MatrixCheckerboard implements Checkerboard {
     private String brico;
     private EnumSet<Assi> direzioni= EnumSet.allOf(Assi.class);
 
+    /**
+     * Restituisce le dimensioni della tabella di gioco.
+     *
+     * @return
+     */
     @Override
     public CheckerboardVariables getDimensioni() {
         return dimensioni;
@@ -47,6 +53,11 @@ public class MatrixCheckerboard implements Checkerboard {
         return this.checkerboard[i][j] == Pawn.None;    //TODO Deve essere qui o altrove? verifica
     }
 
+    /**
+     * Delta expression per dare una rappresentazione video della tabella di gioco.
+     *
+     * @return
+     */
     @Override
     public String stampa() {
         return toPrint((j, i) -> (checkerboard[i][j] == Pawn.None ?
@@ -56,6 +67,12 @@ public class MatrixCheckerboard implements Checkerboard {
                         com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.GREEN)));
     }
 
+    /**
+     * Formatta la tabella di gioco in modo da poterla stampare a video sotto forma di stringa.
+     *
+     * @param smacco
+     * @return
+     */
     public String toPrint(BiFunction<Integer, Integer, String> smacco) {
         brico = "    ";//TODO fai una spaziatura decente e non a caso con n spazi
         for (int i = 0; i < dimensioni.getColumn(); i++)
@@ -71,7 +88,14 @@ public class MatrixCheckerboard implements Checkerboard {
         return brico += "";
     }
 
-
+    /**
+     * Cerca di posizionare una nuova pedina in una data colonna.
+     *
+     * @param p
+     * @param disco
+     * @return
+     * @throws IllegalPawnPlacementException
+     */
     @Override
     public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException {
         if (p > dimensioni.getColumn() || p < 0) {
@@ -94,6 +118,14 @@ public class MatrixCheckerboard implements Checkerboard {
         return false;
     }
 
+    /**
+     * Presa una colonna, ritorna la prima riga disponibile. Se la colonna
+     * � gi� satura, lancia un'eccezione.
+     *
+     * @param column
+     * @return
+     * @throws IllegalPawnPlacementException
+     */
     @Override
     public int gravity(int column) throws IllegalPawnPlacementException {
         int i = 0;
@@ -131,7 +163,13 @@ public class MatrixCheckerboard implements Checkerboard {
         return 0;
     }
 
-   @Override
+    /**
+     * Metodo sovrascritto per ritornare il numero di pedine adiacenti all'ultima inserita.
+     *
+     * @param x
+     * @return
+     */
+    @Override
     public int pawnNeighbor(Orientamento x) {
         return vicini(lastRow, lastColumn,x);
     }

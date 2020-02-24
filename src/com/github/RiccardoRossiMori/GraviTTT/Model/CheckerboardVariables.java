@@ -28,6 +28,8 @@ public class CheckerboardVariables {
     }
 
     /**
+     * Ritorna il numero di righe presenti all'interno della tabella di gioco.
+     *
      * @return the row
      */
     public int getRow() {
@@ -35,6 +37,8 @@ public class CheckerboardVariables {
     }
 
     /**
+     * Ritorna il numero di colonne presenti all'interno della tabella di gioco.
+     *
      * @return the column
      */
     public int getColumn() {
@@ -42,6 +46,9 @@ public class CheckerboardVariables {
     }
 
     /**
+     * Ritorna se la tabella è limitata o meno affinché si possano fare i dovuti controlli
+     * per verificare la vincita di un giocatore.
+     *
      * @return the limited
      */
     public boolean isLimited() {

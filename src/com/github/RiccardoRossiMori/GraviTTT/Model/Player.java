@@ -14,7 +14,9 @@ import java.io.IOException;
  */
 public interface Player {
 
-    int strategy(CheckerboardManager checkerboardManager)throws NumberFormatException, IOException;
+    int strategy()throws NumberFormatException, IOException;
 
-    String stampa();//TODO verifica se eliminare il metodo
+   // int strategy();
+
+    // String stampa();//TODO verifica se eliminare il metodo
 }

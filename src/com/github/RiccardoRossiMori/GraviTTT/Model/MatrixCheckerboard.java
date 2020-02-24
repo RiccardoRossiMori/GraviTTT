@@ -16,9 +16,19 @@ import java.util.function.BiFunction;
  */
 public class MatrixCheckerboard implements Checkerboard {
 
-    public Pawn[][] getCheckerboard() {
-        return checkerboard;
+    private CheckerboardVariables dimensioni;
+    private Pawn[][] checkerboard;
+    private int lastRow, lastColumn;
+    private EnumSet<Assi> direzioni = EnumSet.allOf(Assi.class);
+
+    public MatrixCheckerboard(@NotNull CheckerboardVariables s) {
+        this.setCheckerboard(new Pawn[s.getColumn()][s.getRow()]);
+        this.setVariabiliDiGioco(s);
     }
+
+   /* public Pawn[][] getCheckerboard() {
+        return checkerboard;
+    }*/
 
     private void setCheckerboard(Pawn[][] checkerboard) {
         this.checkerboard = checkerboard;
@@ -27,10 +37,6 @@ public class MatrixCheckerboard implements Checkerboard {
         }
     }
 
-    private Pawn[][] checkerboard;
-    private int lastRow, lastColumn;
-    private String brico;
-    private EnumSet<Assi> direzioni= EnumSet.allOf(Assi.class);
 
     /**
      * Restituisce le dimensioni della tabella di gioco.
@@ -42,16 +48,11 @@ public class MatrixCheckerboard implements Checkerboard {
         return dimensioni;
     }
 
-    private CheckerboardVariables dimensioni;
 
-    public MatrixCheckerboard(CheckerboardVariables s) {
-        this.setCheckerboard(new Pawn[s.getColumn()][s.getRow()]);
-        this.setVariabiliDiGioco(s);
-    }
 
-    public boolean isItEmpty(int i, int j) {
+  /*  public boolean isItEmpty(int i, int j) {
         return this.checkerboard[i][j] == Pawn.None;    //TODO Deve essere qui o altrove? verifica
-    }
+    }*/
 
     /**
      * Delta expression per dare una rappresentazione video della tabella di gioco.
@@ -60,7 +61,7 @@ public class MatrixCheckerboard implements Checkerboard {
      */
     @Override
     public String stampa() {
-        return toPrint((j, i) -> (checkerboard[i][j] == Pawn.None ?
+        return toPrint((j, i) -> (checkerboard[i][j] == com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.None ?
                 com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.NONE :
                 (this.checkerboard[i][j] == com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red ?
                         com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.RED :
@@ -74,18 +75,18 @@ public class MatrixCheckerboard implements Checkerboard {
      * @return
      */
     public String toPrint(BiFunction<Integer, Integer, String> smacco) {
-        brico = "    ";//TODO fai una spaziatura decente e non a caso con n spazi
+        String brico = "    ";//TODO fai una spaziatura decente e non a caso con n spazi
         for (int i = 0; i < dimensioni.getColumn(); i++)
-            brico += String.format("%3d ", (i+1));
+            brico += String.format("%3d ", (i + 1));
         brico += String.format("\n");
-        for (int j = dimensioni.getRow()-1; j >= 0; j--) {
-            brico += String.format("%3d ", (j+1));
+        for (int j = dimensioni.getRow() - 1; j >= 0; j--) {
+            brico += String.format("%3d ", (j + 1));
             for (int i = 0; i < dimensioni.getColumn(); i++) {
                 brico += String.format("| %s ", smacco.apply(j, i));
             }
             brico += String.format(" #\n");
         }
-        return brico += "";
+        return "";
     }
 
     /**
@@ -98,29 +99,48 @@ public class MatrixCheckerboard implements Checkerboard {
      */
     @Override
     public boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException {
-        if (p > dimensioni.getColumn() || p < 0) {
+        if (this.isOut(p)) {
             throw new IllegalPawnPlacementException();
         }
         int x = gravity(p);
-        if(checkerboard[p][x]==Pawn.None)
-        checkerboard[p][x] = disco;
-            else throw new IllegalPawnPlacementException();
+        if (checkerboard[p][x] == Pawn.None)
+            checkerboard[p][x] = disco;
+        else throw new IllegalPawnPlacementException();
         lastRow = x;
         lastColumn = p;
         return vincitore(p, x);
     }
 
+    /**
+     * Verifica che la data colonna non sia al di fuori delle dimensioni della tabella di gioco.
+     *
+     * @param p
+     * @return
+     */
+    private boolean isOut(int p) {
+        return p > dimensioni.getColumn() || p < 0;
+    }
+
+    /**
+     * Verifica le condizioni di vittoria di un giocatore.
+     *
+     * @param i
+     * @param j
+     * @return
+     */
     @Override
     public boolean vincitore(int i, int j) {
-        for (Assi asse:direzioni) {
-            if ((this.pawnNeighbor(asse.dammiLaDirezione(true))+(this.pawnNeighbor(asse.dammiLaDirezione(false))-1))>=4)return true;
+        for (Assi asse : direzioni) {
+            if ((this.pawnNeighbor(asse.dammiLaDirezione(true))
+                    + (this.pawnNeighbor(asse.dammiLaDirezione(false)) - 1)) >= 4)
+                return true;
         }
         return false;
     }
 
     /**
      * Presa una colonna, ritorna la prima riga disponibile. Se la colonna
-     * ï¿½ giï¿½ satura, lancia un'eccezione.
+     * è già satura, lancia un'eccezione.
      *
      * @param column
      * @return
@@ -129,7 +149,7 @@ public class MatrixCheckerboard implements Checkerboard {
     @Override
     public int gravity(int column) throws IllegalPawnPlacementException {
         int i = 0;
-        while (i<this.dimensioni.getRow()) {
+        while (i < this.dimensioni.getRow()) {
             if (checkerboard[column][i] == Pawn.None) {
                 return i;
             } else
@@ -156,10 +176,10 @@ public class MatrixCheckerboard implements Checkerboard {
      */
 
     private int vicini(int row, int column, Orientamento x) {
-        if (row<0||row>=dimensioni.getRow()||column<0||column>=dimensioni.getColumn())
+        if (row < 0 || row >= dimensioni.getRow() || column < 0 || column >= dimensioni.getColumn())
             return 0;
-        if(checkerboard[lastColumn][lastRow]==checkerboard[column][row])
-            return vicini(row+x.rowMove(),column+x.columnMove(),x)+1;
+        if (checkerboard[lastColumn][lastRow] == checkerboard[column][row])
+            return vicini(row + x.rowMove(), column + x.columnMove(), x) + 1;
         return 0;
     }
 
@@ -171,7 +191,7 @@ public class MatrixCheckerboard implements Checkerboard {
      */
     @Override
     public int pawnNeighbor(Orientamento x) {
-        return vicini(lastRow, lastColumn,x);
+        return vicini(lastRow, lastColumn, x);
     }
 
 

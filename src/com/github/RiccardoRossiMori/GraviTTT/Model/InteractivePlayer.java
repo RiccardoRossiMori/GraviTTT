@@ -26,15 +26,15 @@ public class InteractivePlayer implements Player {
      *
      */
     @Override
-    public int strategy(CheckerboardManager checkerboardManager) throws NumberFormatException, IOException {
+    public int strategy() throws NumberFormatException, IOException {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         int colonna = Integer.parseInt(read.readLine())-1;//TODO controlla se è legittima questa cosa
         return colonna;
     }
 
-    @Override
+    /*@Override
     public String stampa() {
         return "com.github.RiccardoRossiMori.GraviTTT.Model.InteractivePlayer";
-    }
+    }*/
 
 }

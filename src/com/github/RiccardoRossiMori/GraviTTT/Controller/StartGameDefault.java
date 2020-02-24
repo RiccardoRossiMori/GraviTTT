@@ -27,9 +27,9 @@ public class StartGameDefault implements StartGameInterface {
      * @return
      */
 
-    private static Player getPlayerFactory(String string) {
+    private static Player getPlayerFactory(String string, CheckerboardManager checkerboardManager) {
         if (string.equals("bot")) {
-            return new RandomPlayer();
+            return new RandomPlayer(checkerboardManager);
         }
         return new InteractivePlayer();
     }
@@ -58,17 +58,17 @@ public class StartGameDefault implements StartGameInterface {
      * com.github.RiccardoRossiMori.GraviTTT.Model.Player di tipo com.github.RiccardoRossiMori.GraviTTT.Model.InteractivePlayer, ossia un giocatore Interattivo.
      * Potrebbe essere lanciata una IOException poiché richiede degli input esterni.
      *
-     * @param giocatorenumerox
+     * @param giocatoreNumeroX
      * @return Player
      * @throws IOException
      */
     @Override
-    public Player scegliGiocatori(String giocatorenumerox) throws IOException {
+    public Player scegliGiocatori(String giocatoreNumeroX) throws IOException {
         //List<com.github.RiccardoRossiMori.GraviTTT.Model.Player> giocatori=null;
-        String tipodigiocatorescelto; //x= vista.getStringPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
-        tipodigiocatorescelto = gameManager.getVista().getStringPlayer(giocatorenumerox + " giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
+        String tipoDiGiocatoreScelto; //x= vista.getStringPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
+        tipoDiGiocatoreScelto = gameManager.getVista().getStringPlayer(giocatoreNumeroX + " giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
         //getPlayerFactory(x.toLowerCase());
-        return getPlayerFactory(tipodigiocatorescelto.toLowerCase());
+        return getPlayerFactory(tipoDiGiocatoreScelto.toLowerCase(), gameManager.getCheckerboardManager());
         //giocatori.add(getPlayerFactory(x)); //giocatori.add(y.toLowerCase()); //return giocatori;
     }
 

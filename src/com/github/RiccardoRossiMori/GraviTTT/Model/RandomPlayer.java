@@ -16,11 +16,13 @@ public class RandomPlayer implements Player {
     private Random random;
     private CheckerboardManager checkerboardManager;
 
-    public RandomPlayer(int seed) {
+    public RandomPlayer(CheckerboardManager checkerboardManager, int seed) {
+        this.setCheckerboardManager(checkerboardManager);
         random = new Random(seed);
     }
 
-    public RandomPlayer() {
+    public RandomPlayer(CheckerboardManager checkerboardManager) {
+        this.setCheckerboardManager(checkerboardManager);
         random = new Random();
     }
 
@@ -42,9 +44,8 @@ public class RandomPlayer implements Player {
      *
      */
     @Override
-    public int strategy(CheckerboardManager checkerboardManager) {
-        this.setCheckerboardManager(checkerboardManager);
-        int x= random.nextInt(checkerboardManager.getCheckerboard().getDimensioni().getColumn());
+    public int strategy() {
+        int x= random.nextInt(this.checkerboardManager.getCheckerboard().getDimensioni().getColumn());
         return x==0?x:x-1;
     }
 

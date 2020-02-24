@@ -115,18 +115,33 @@ public class GameManager implements GameManagerInterface {
         this.status();
         while (!winner) {
             this.sendMessage("Ora è il turno del " + (this.turno ? "giocatore uno " : "giocatore due") + "\n");
-            try {
-                winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace (?)
-            } catch (IllegalPawnPlacementException i) {
-                this.sendMessage("Errore, colonna non valida!");
-                continue;
-            }
+            winner=this.mossa();
             this.status();
             if (!winner)
                 cambioTurno();
         }
     }
 
+    /**
+     *  Gestisce la singola mossa, ritornando true solo se l'ultima mossa è stata vincente.
+     *
+     * @return winner
+     * @throws IOException
+     */
+    private boolean mossa() throws IOException {
+        try {
+            return winner = checkerboardManager.action(getGiocatore().strategy(), turno);//TODO trova soluzione più semplice ed efficace (?)
+        } catch (IllegalPawnPlacementException i) {
+            this.sendMessage("Errore, colonna non valida!");
+        } catch (NumberFormatException n){
+            this.sendMessage("Errore: inserire un numero!");
+        }
+        return winner;
+    }
+
+    /**
+     * Stampa a video il vincitore della partita.
+     */
     private void conclusione() {
         this.sendMessage("La vittoria è del " + (this.turno ? "giocatore uno " : "giocatore due") + "\n");
     }

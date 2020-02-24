@@ -1,6 +1,9 @@
 package com.github.RiccardoRossiMori.GraviTTT.Controller;
 
-import com.github.RiccardoRossiMori.GraviTTT.Model.*;
+import com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables;
+import com.github.RiccardoRossiMori.GraviTTT.Model.InteractivePlayer;
+import com.github.RiccardoRossiMori.GraviTTT.Model.Player;
+import com.github.RiccardoRossiMori.GraviTTT.Model.RandomPlayer;
 import com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView;
 
 import java.io.IOException;
@@ -9,9 +12,7 @@ import java.io.IOException;
  * <b>Responsabilità: </b>Inizializzare una partita tra due <code>com.github.RiccardoRossiMori.GraviTTT.Model.Player</code> ed una <code>com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard</code>
  * con variabili standard, ossia una scacchiera con 6 righe e 7 colonne limitata esteriormente.
  *
- *
  * @author Riccardo Rossi Mori
- *
  */
 
 public class StartGameDefault implements StartGameInterface {
@@ -20,7 +21,6 @@ public class StartGameDefault implements StartGameInterface {
     private GameManager gameManager;
 
     /**
-     *
      * getPlayerFactory, presa una stringa, instanzia un giocatore del tipo richiesto.
      *
      * @param string
@@ -40,20 +40,18 @@ public class StartGameDefault implements StartGameInterface {
     }
 
     /**
-     *
      * Inizializza le variabili di gioco
-     * @throws IOException
      *
+     * @throws IOException
      */
     @Override
     public void init(GameManager gameManager) {// TODO Sistema variabili in modo decente
-        this.gameManager= gameManager;
+        this.gameManager = gameManager;
         //gameManager = new GameManager(new MatrixCheckerboard(dimensioni));
         gameManager.setVista(new GraviTTTConsoleView());
     }
 
     /**
-     *
      * Instanzia un particolare com.github.RiccardoRossiMori.GraviTTT.Model.Player a seconda della stringa inserita.
      * Se si scrive 'bot' verrà instanziato un com.github.RiccardoRossiMori.GraviTTT.Model.Player di tipo com.github.RiccardoRossiMori.GraviTTT.Model.RandomPlayer, che eseguirà ogni
      * mossa casualmente, mentre se si scriverà una qualunque altra cosa verrà instanziato un

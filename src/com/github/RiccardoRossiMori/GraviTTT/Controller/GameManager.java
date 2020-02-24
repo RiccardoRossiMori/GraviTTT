@@ -17,7 +17,6 @@ import java.io.IOException;
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public class GameManager implements GameManagerInterface {
     private GraviTTTView vista;
@@ -33,14 +32,20 @@ public class GameManager implements GameManagerInterface {
      * TODO implementa partite continue
      * TODO possibile implementazione del design pattern "strategy" per le strategie dei player... per ora rimane ipotesi
      */
-    private StartGameInterface startGameInterface ;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
+    private StartGameInterface startGameInterface;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
 
-   public CheckerboardManager getCheckerboardManager() {
+    public CheckerboardManager getCheckerboardManager() {
         return checkerboardManager;
     }
 
-    private CheckerboardManager checkerboardManager ;
-    private boolean winner , turno;
+    private CheckerboardManager checkerboardManager;
+    private boolean winner;
+
+    public boolean isTurno() {
+        return turno;
+    }
+
+    private boolean turno;
 
     public GameManager(MatrixCheckerboard matrixCheckerboard) {
         this.startGameInterface = new StartGameDefault();
@@ -61,7 +66,6 @@ public class GameManager implements GameManagerInterface {
 
 
     /**
-     *
      * Restituisce, a seconda del turno, il giocatore uno oppure il giocatore 2.
      *
      * @return giocatore1|giocatore2
@@ -94,28 +98,28 @@ public class GameManager implements GameManagerInterface {
         this.turno = true;
         this.status();
         while (!winner) {
-            this.sendMessage( "Ora è il turno del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
+            this.sendMessage("Ora è il turno del " + (this.turno ? "giocatore uno " : "giocatore due") + "\n");
             try {
                 winner = checkerboardManager.action(getGiocatore().strategy(this.checkerboardManager), turno);//TODO trova soluzione più semplice ed efficace (?)
-            }catch (IllegalPawnPlacementException i){
+            } catch (IllegalPawnPlacementException i) {
                 this.sendMessage("Errore, colonna non valida!");
                 continue;
             }
             this.status();
-            if(!winner)
+            if (!winner)
                 cambioTurno();
         }
     }
 
-    private void conclusione(){
-        this.sendMessage( "La vittoria è del " + (this.turno?"giocatore uno ":"giocatore due" )+"\n");
+    private void conclusione() {
+        this.sendMessage("La vittoria è del " + (this.turno ? "giocatore uno " : "giocatore due") + "\n");
     }
 
-    private void sendMessage(String string){//TODO creare un metodo public in interface per ereditare il metodo obbligatoriamente
+    private void sendMessage(String string) {//TODO creare un metodo public in interface per ereditare il metodo obbligatoriamente
         vista.printMessage(string);
     }
 
-    private void status(){
+    private void status() {
         vista.printCheckerboard(checkerboardManager.toPrint());
     }
 

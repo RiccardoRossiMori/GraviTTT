@@ -7,44 +7,34 @@ import com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameInterface;
 import com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 import org.junit.jupiter.api.Assertions;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class GameManagerTest {
-    CheckerboardVariables dimensioni= CheckerboardVariables.DEFAULT_SIZE;
-    GameManager game;
-    StartGameInterface startGameInterface;
 
-    @org.junit.jupiter.api.BeforeEach
-    void setUp() {
-       this.game = new GameManager(new MatrixCheckerboard(dimensioni));
-       this.startGameInterface = new StartGameDefault();
-    }
+        CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
+        GameManager game;
+        StartGameInterface startGameInterface;
 
-    @org.junit.jupiter.api.AfterEach
-    void tearDown() {
-    }
+        @BeforeEach
+        void setUp() {
+            this.game = new GameManager(new MatrixCheckerboard(dimensioni));
+            this.startGameInterface = new StartGameDefault();
+        }
 
-    @org.junit.jupiter.api.Test
-    void getCheckerboardManager() {
-        Assertions.assertEquals(CheckerboardManager.class,game.getCheckerboardManager().getClass(),"tutto ok");
-    }
+        @Test
+        void getCheckerboardManager() {
+            Assertions.assertEquals(CheckerboardManager.class, game.getCheckerboardManager().getClass(), "tutto ok");
+        }
 
-    @org.junit.jupiter.api.Test
-    void cambioTurno() {
-        game.cambioTurno();
-        //Assertions.assertFalse(); //TODO controlla che dopo cambio turno la variabile turno sia false
-    }
-
-    @org.junit.jupiter.api.Test
-    void play() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void setVista() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void getVista() {
-    }
+        @Test
+        void cambioTurno() {
+            if (game.isTurno()) {
+                game.cambioTurno();
+                Assertions.assertFalse(game.isTurno());
+            } else {
+                game.cambioTurno();
+                Assertions.assertTrue(game.isTurno());
+            }
+        }
 }

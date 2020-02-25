@@ -22,6 +22,12 @@ public interface Checkerboard {
      */
     boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException;
 
+    /**
+     * Restituisce vero o falso a seconda se l'ultima mossa sia stata o meno vincente.
+     * @param i
+     * @param j
+     * @return
+     */
     boolean vincitore(int i, int j);
 
     /**

@@ -26,18 +26,12 @@ public class StartGameDefault implements StartGameInterface {
      * @param string
      * @return
      */
-
     private static Player getPlayerFactory(String string, CheckerboardManager checkerboardManager) {
         if (string.equals("bot")) {
             return new RandomPlayer(checkerboardManager);
         }
         return new InteractivePlayer();
     }
-
-   /* @Override
-    public CheckerboardManager getCheckerboardManager() {
-        return this.gameManager.getCheckerboardManager();
-    }*/
 
     /**
      * Inizializza le variabili di gioco

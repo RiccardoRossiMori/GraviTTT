@@ -5,7 +5,8 @@ import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
 import java.io.IOException;
 
 /**
- * <b>Responsabilità: </b>Gestisce la strategia di gioco di un <code>com.github.RiccardoRossiMori.GraviTTT.Model.Player</code>.
+ * <b>Responsabilità: </b>Gestisce la strategia di gioco di un
+ * <code>com.github.RiccardoRossiMori.GraviTTT.Model.Player</code>.
  */
 
 /**
@@ -14,6 +15,14 @@ import java.io.IOException;
  */
 public interface Player {
 
+    /**
+     * Restituisce un intero che verrà poi preso come input
+     * per mettere la pedina in una colonna.
+     *
+     * @return
+     * @throws NumberFormatException
+     * @throws IOException
+     */
     int strategy()throws NumberFormatException, IOException;
 
    // int strategy();

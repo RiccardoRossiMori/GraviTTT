@@ -21,7 +21,7 @@ public class MatrixCheckerboard implements Checkerboard {
     private int lastRow, lastColumn;
     private EnumSet<Assi> direzioni = EnumSet.allOf(Assi.class);
 
-    public MatrixCheckerboard(@NotNull CheckerboardVariables s) {
+    public MatrixCheckerboard(@NotNull CheckerboardVariables s) {//TODO eliminare il @notnull ??
         this.setCheckerboard(new Pawn[s.getColumn()][s.getRow()]);
         this.setVariabiliDiGioco(s);
     }

@@ -1,7 +1,5 @@
 package com.github.RiccardoRossiMori.GraviTTT.Model;
 
-import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,9 +24,10 @@ public class InteractivePlayer implements Player {
      *
      */
     @Override
+    //TODO cambia implementazione in modo che l'input non dipendi da questa classe
     public int strategy() throws NumberFormatException, IOException {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-        int colonna = Integer.parseInt(read.readLine())-1;//TODO controlla se è legittima questa cosa
+        int colonna = Integer.parseInt(read.readLine())-1;
         return colonna;
     }
 

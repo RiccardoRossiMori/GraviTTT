@@ -16,6 +16,13 @@ public class RandomPlayer implements Player {
     private Random random;
     private CheckerboardManager checkerboardManager;
 
+    /**
+     * Costruttore con un intero seed come parametro per poter avere un determinato
+     * set di numeri casuali fissi e poter fare dei test più puntuali.
+     *
+     * @param checkerboardManager
+     * @param seed
+     */
     public RandomPlayer(CheckerboardManager checkerboardManager, int seed) {
         this.setCheckerboardManager(checkerboardManager);
         random = new Random(seed);
@@ -48,10 +55,4 @@ public class RandomPlayer implements Player {
         int x= random.nextInt(this.checkerboardManager.getCheckerboard().getDimensioni().getColumn());
         return x==0?x:x-1;
     }
-
-  /*  @Override
-    public String stampa() {
-        return "RandomPlayer";
-    }*/
-
 }

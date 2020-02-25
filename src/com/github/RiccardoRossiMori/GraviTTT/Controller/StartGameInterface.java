@@ -13,8 +13,6 @@ import java.io.IOException;
  */
 public interface StartGameInterface {
 
-   // CheckerboardManager getCheckerboardManager();//TODO che vada eliminato il metodo?
-
     /**
      * Viene fornita una implementazione di base per settare le dimensioni della tabella
      * di gioco.

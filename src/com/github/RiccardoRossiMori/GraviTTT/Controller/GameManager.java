@@ -21,6 +21,9 @@ import java.io.IOException;
 public class GameManager implements GameManagerInterface {
     private GraviTTTView vista;
     private Player giocatore1, giocatore2;
+    private StartGameInterface startGameInterface;
+    private CheckerboardManager checkerboardManager;
+    private boolean winner, turno;
     /*
      * TODO verifica di rispettare i principi "L" ed "I" dei principi SOLID
      * TODO implementa il codice in RandomPlayerFactory e InteractivePlayerFactory se necessario (controlla)
@@ -32,21 +35,6 @@ public class GameManager implements GameManagerInterface {
      * TODO implementa partite continue
      * TODO possibile implementazione del design pattern "strategy" per le strategie dei player... per ora rimane ipotesi
      */
-    private StartGameInterface startGameInterface;// private CheckerboardVariables dimensioni //  private MatrixCheckerboard checkerboard;
-
-    public CheckerboardManager getCheckerboardManager() {
-        return checkerboardManager;
-    }
-
-    private CheckerboardManager checkerboardManager;
-    private boolean winner;
-
-    public boolean isTurno() {
-        return turno;
-    }
-
-    private boolean turno;
-
     public GameManager(MatrixCheckerboard matrixCheckerboard) {
         this.startGameInterface = new StartGameDefault();
         //this.dimensioni = CheckerboardVariables.DEFAULT_SIZE;//TODO controlla se puoi eliminare le due righe commentate
@@ -55,6 +43,13 @@ public class GameManager implements GameManagerInterface {
         this.winner = false;
     }
 
+    /**
+     * Ritorna il manager della tabella di gioco.
+     * @return
+     */
+    public CheckerboardManager getCheckerboardManager() {
+        return checkerboardManager;
+    }
 
     /**
      * Gestisce il cambio turno durante una partita.
@@ -64,13 +59,19 @@ public class GameManager implements GameManagerInterface {
         this.turno = !turno;
     }
 
+    /**
+     * Ritorna il valore del turno.
+     * @return
+     */
+    public boolean isTurno() {
+        return turno;
+    }
 
     /**
      * Restituisce, a seconda del turno, il giocatore uno oppure il giocatore 2.
      *
      * @return giocatore1|giocatore2
      */
-
     private Player getGiocatore() {
         return turno ? giocatore1 : giocatore2;
     }

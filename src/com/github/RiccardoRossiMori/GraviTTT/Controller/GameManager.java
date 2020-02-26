@@ -26,12 +26,8 @@ public class GameManager implements GameManagerInterface {
     private boolean winner, turno;
     /*
      * TODO verifica di rispettare i principi "L" ed "I" dei principi SOLID
-     * TODO implementa il codice in RandomPlayerFactory e InteractivePlayerFactory se necessario (controlla)
-     * TODO refactoring del codice, sposta il main e tutto ciò che non è compito del GameManager
-     * TODO lanciare e gestire le eccezioni dove necessario
      * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
      * TODO Creare Test per le diverse parti di codice
-     * TODO gestire IllegalInputException (voglio int, mi danno char o String)
      * TODO implementa partite continue
      * TODO possibile implementazione del design pattern "strategy" per le strategie dei player... per ora rimane ipotesi
      */
@@ -86,14 +82,12 @@ public class GameManager implements GameManagerInterface {
     public void play() throws IOException, IllegalPawnPlacementException {
         //inizializzazione partita
         this.start();
-        //while (partita){
         //gestione partita
         this.partita();
         //stampa vincitore
         this.conclusione();
-        //voglioGiocareAncora?partita=true:partita=false;}
-        //TODO chiedi se si vuole giocare un'altra partita.
     }
+
 
     /**
      * Richiede ed instanzia i due giocatori per la partita.

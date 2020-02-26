@@ -86,7 +86,7 @@ public class MatrixCheckerboard implements Checkerboard {
             }
             brico += String.format(" #\n");
         }
-        return "";
+        return brico;
     }
 
     /**

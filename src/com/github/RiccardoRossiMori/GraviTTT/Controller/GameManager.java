@@ -41,6 +41,7 @@ public class GameManager implements GameManagerInterface {
      *
      * @return
      */
+    @Override
     public CheckerboardManager getCheckerboardManager() {
         return checkerboardManager;
     }
@@ -143,7 +144,8 @@ public class GameManager implements GameManagerInterface {
      *
      * @param string
      */
-    private void sendMessage(final String string) {//TODO creare un metodo public in interface per ereditare il metodo obbligatoriamente
+    @Override
+    public void sendMessage(final String string) {
         vista.printMessage(string);
     }
 

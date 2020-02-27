@@ -28,7 +28,20 @@ public interface GameManagerInterface {
      */
     void play() throws IOException, IllegalPawnPlacementException;
 
+    /**
+     * Presa una stringa in ingresso, la invia alla view per stamparla a video.
+     *
+     * @param string
+     */
+    void sendMessage(String string);
+
     GraviTTTView getVista();
 
+    /**
+     * Chiede alla view un input intero e lo ritorna.
+     *
+     * @return l'input preso dalla view.
+     * @throws IOException
+     */
     int getterIntegerInput() throws IOException;
 }

@@ -13,7 +13,13 @@ import java.io.IOException;
  * @author Riccardo Rossi Mori
  */
 public interface GameManagerInterface {
-    //TODO inserisci più metodi quì da cui dipendere per le estensioni
+
+    /**
+     * Ritorna il manager della tabella di gioco.
+     *
+     * @return
+     */
+    CheckerboardManager getCheckerboardManager();
 
     /**
      * Fa sì che il turno passi da un giocatore ad un altro.

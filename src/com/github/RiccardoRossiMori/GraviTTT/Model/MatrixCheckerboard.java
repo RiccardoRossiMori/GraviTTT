@@ -65,6 +65,7 @@ public class MatrixCheckerboard implements Checkerboard {
      * @return
      */
     public String toPrint(final BiFunction<Integer, Integer, String> smacco) {
+        String brico = String.format("%4s"," ");
         for (int i = 0; i < this.dimensioni.getColumn(); i++)
             brico += String.format("%3d ", (i + 1));
         brico += String.format("\n");

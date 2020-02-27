@@ -24,10 +24,10 @@ public class GameManager implements GameManagerInterface {
     private boolean winner, turno;
 
     /*
+     * TODO Scrivi test per le eccezioni
+     * TODO Scrivi test per partite vinte da giocatore uno o due.
      * TODO verifica di rispettare i principi "L" ed "I" dei principi SOLID
      * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
-     * TODO Creare Test per le diverse parti di codice
-     * TODO implementa partite continue
      * TODO possibile implementazione del design pattern "strategy" per le strategie dei player... per ora rimane ipotesi
      */
     public GameManager(MatrixCheckerboard matrixCheckerboard) {
@@ -121,7 +121,7 @@ public class GameManager implements GameManagerInterface {
      */
     private boolean mossa() throws IOException {
         try {
-            return this.winner = this.checkerboardManager.action(this.getGiocatore().strategy(), this.turno);//TODO trova soluzione più semplice ed efficace (?)
+            return this.winner = this.checkerboardManager.action(this.getGiocatore().strategy(), this.turno);
         } catch (final IllegalPawnPlacementException i) {
             this.sendMessage("Errore, colonna non valida!");
             this.turno =!this.turno;

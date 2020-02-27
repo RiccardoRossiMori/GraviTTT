@@ -22,7 +22,7 @@ public interface StartGameInterface {
      * @param <T>
      * @return
      */
-    default <T extends CheckerboardVariables> CheckerboardVariables setSize(final int i, final int j, final boolean flag) {//TODO chiedi a qualcuno se può andare scritto così
+    default <T extends CheckerboardVariables> CheckerboardVariables setSize(final int i, final int j, final boolean flag) {
         return new CheckerboardVariables(i, j, flag);//metodo marginale, mai utilizzato, ma comunque implementato per estensioni future
     }
 

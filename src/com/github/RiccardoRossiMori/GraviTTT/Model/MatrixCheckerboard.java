@@ -65,7 +65,6 @@ public class MatrixCheckerboard implements Checkerboard {
      * @return
      */
     public String toPrint(final BiFunction<Integer, Integer, String> smacco) {
-        String brico = "    ";//TODO fai una spaziatura decente e non a caso con n spazi
         for (int i = 0; i < this.dimensioni.getColumn(); i++)
             brico += String.format("%3d ", (i + 1));
         brico += String.format("\n");

@@ -38,7 +38,7 @@ public class StartGameDefault implements StartGameInterface {
      * @throws IOException
      */
     @Override
-    public void init(final GameManager gameManager) {// TODO Sistema variabili in modo decente
+    public void init(final GameManager gameManager) {
         this.gameManager = gameManager;
         gameManager.setVista(new GraviTTTConsoleView());
     }

@@ -45,10 +45,6 @@ public class CheckerboardManager {
      * @return
      */
     public boolean action(final int p, final boolean turno) throws IllegalPawnPlacementException {
-        //ODO implementare il metodo
-        //com.github.RiccardoRossiMori.GraviTTT.GameManagerInterface.getCheckerboard().putPawn(p,com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red);
-        //com.github.RiccardoRossiMori.GraviTTT.Model.Pawn disco= com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Green;
-        //	checkerboard.putPawn(p, disco);
         return turno ? this.checkerboard.putPawn(p, Pawn.Red) : this.checkerboard.putPawn(p, Pawn.Green);
     }
 

@@ -26,10 +26,6 @@ public class MatrixCheckerboard implements Checkerboard {
         setVariabiliDiGioco(s);
     }
 
-   /* public Pawn[][] getCheckerboard() {
-        return checkerboard;
-    }*/
-
     private void setCheckerboard(final Pawn[][] checkerboard) {
         this.checkerboard = checkerboard;
         for (final Pawn[] row : this.checkerboard) {
@@ -47,12 +43,6 @@ public class MatrixCheckerboard implements Checkerboard {
     public CheckerboardVariables getDimensioni() {
         return this.dimensioni;
     }
-
-
-
-  /*  public boolean isItEmpty(int i, int j) {
-        return this.checkerboard[i][j] == Pawn.None;    //TODO Deve essere qui o altrove? verifica
-    }*/
 
     /**
      * Delta expression per dare una rappresentazione video della tabella di gioco.
@@ -157,14 +147,6 @@ public class MatrixCheckerboard implements Checkerboard {
         }
         throw new IllegalPawnPlacementException();
     }
-/*	public static void com.github.RiccardoRossiMori.GraviTTT.main(String argv[]) throws com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacement {
-		com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables dimensioni = com.github.RiccardoRossiMori.GraviTTT.Model.CheckerboardVariables.DEFAULT_SIZE;
-		com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard matrixCheckerboard = new com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard(dimensioni);
-		matrixCheckerboard.putPawn(1,com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red);
-		int x=matrixCheckerboard.gravity(1);
-		assert x==0: "Perfetto!";
-		System.out.println(x + " valore restituito");
-	}*/
 
     /**
      * Restituisce un intero che dice quante pedine ho di fila attorno a me.

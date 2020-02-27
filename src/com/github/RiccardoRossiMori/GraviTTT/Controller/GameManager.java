@@ -78,11 +78,8 @@ public class GameManager implements GameManagerInterface {
      */
     @Override
     public void play() throws IOException {
-        //inizializzazione partita
         this.start();
-        //gestione partita
         this.partita();
-        //stampa vincitore
         this.conclusione();
     }
 

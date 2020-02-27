@@ -21,8 +21,4 @@ public interface Player {
      * @throws IOException
      */
     int strategy() throws NumberFormatException, IOException;
-
-    // int strategy();
-
-    // String stampa();//TODO verifica se eliminare il metodo
 }

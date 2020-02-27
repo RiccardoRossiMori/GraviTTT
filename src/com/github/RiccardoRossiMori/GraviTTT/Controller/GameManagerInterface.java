@@ -31,5 +31,4 @@ public interface GameManagerInterface {
     GraviTTTView getVista();
 
     int getterIntegerInput() throws IOException;
-    //List<? extends com.github.RiccardoRossiMori.GraviTTT.Model.Player> scegliGiocatori() throws IOException;
 }

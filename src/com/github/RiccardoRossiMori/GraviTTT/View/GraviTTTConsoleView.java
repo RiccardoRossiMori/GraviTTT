@@ -20,7 +20,6 @@ public class GraviTTTConsoleView implements GraviTTTView {
     public static final String GREEN = "G";
     public static final String NONE = " ";
 
-    private MatrixCheckerboard matrixCheckerboard;
     private BufferedReader buffer;
     private Stream<String> printer;
 

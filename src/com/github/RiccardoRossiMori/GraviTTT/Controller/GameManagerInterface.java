@@ -5,12 +5,12 @@ package com.github.RiccardoRossiMori.GraviTTT.Controller;
  */
 
 import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementException;
+import com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTView;
 
 import java.io.IOException;
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public interface GameManagerInterface {
     //TODO inserisci più metodi quì da cui dipendere per le estensioni
@@ -27,5 +27,9 @@ public interface GameManagerInterface {
      * @throws IllegalPawnPlacementException
      */
     void play() throws IOException, IllegalPawnPlacementException;
+
+    GraviTTTView getVista();
+
+    int getterIntegerInput() throws IOException;
     //List<? extends com.github.RiccardoRossiMori.GraviTTT.Model.Player> scegliGiocatori() throws IOException;
 }

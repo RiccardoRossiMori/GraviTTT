@@ -13,9 +13,9 @@ public enum Orientamento {
      *
      * @return
      */
-    public int rowMove(){
-        if(this==Nord||this==Nord_Est||this==Nord_Ovest)return 1;
-        if (this==Sud||this==Sud_Est||this==Sud_Ovest)return -1;
+    public int rowMove() {
+        if (this == Orientamento.Nord || this == Orientamento.Nord_Est || this == Orientamento.Nord_Ovest) return 1;
+        if (this == Orientamento.Sud || this == Orientamento.Sud_Est || this == Orientamento.Sud_Ovest) return -1;
         return 0;
     }
 
@@ -25,9 +25,9 @@ public enum Orientamento {
      *
      * @return
      */
-    public int columnMove(){
-        if(this==Est||this==Nord_Est||this==Sud_Est)return 1;
-        if (this==Ovest||this==Nord_Ovest||this==Sud_Ovest)return -1;
+    public int columnMove() {
+        if (this == Orientamento.Est || this == Orientamento.Nord_Est || this == Orientamento.Sud_Est) return 1;
+        if (this == Orientamento.Ovest || this == Orientamento.Nord_Ovest || this == Orientamento.Sud_Ovest) return -1;
         return 0;
     }
 }

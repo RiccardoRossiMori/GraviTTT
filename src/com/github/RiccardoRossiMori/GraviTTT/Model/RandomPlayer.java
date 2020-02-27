@@ -3,17 +3,14 @@ package com.github.RiccardoRossiMori.GraviTTT.Model; /**
  */
 
 import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
-import com.github.RiccardoRossiMori.GraviTTT.Controller.GameManager;
-import com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameInterface;
 
 import java.util.Random;
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public class RandomPlayer implements Player {
-    private Random random;
+    private final Random random;
     private CheckerboardManager checkerboardManager;
 
     /**
@@ -23,14 +20,14 @@ public class RandomPlayer implements Player {
      * @param checkerboardManager
      * @param seed
      */
-    public RandomPlayer(CheckerboardManager checkerboardManager, int seed) {
-        this.setCheckerboardManager(checkerboardManager);
-        random = new Random(seed);
+    public RandomPlayer(final CheckerboardManager checkerboardManager, final int seed) {
+        setCheckerboardManager(checkerboardManager);
+        this.random = new Random(seed);
     }
 
-    public RandomPlayer(CheckerboardManager checkerboardManager) {
-        this.setCheckerboardManager(checkerboardManager);
-        random = new Random();
+    public RandomPlayer(final CheckerboardManager checkerboardManager) {
+        setCheckerboardManager(checkerboardManager);
+        this.random = new Random();
     }
 
     /**
@@ -39,20 +36,19 @@ public class RandomPlayer implements Player {
      *
      * @param checkerboardManager
      */
-    public void setCheckerboardManager(CheckerboardManager checkerboardManager) {
+    public void setCheckerboardManager(final CheckerboardManager checkerboardManager) {
         this.checkerboardManager = checkerboardManager;
     }
 
     /**
-     *
      * Implementa la strategia di gioco di un bot che posiziona <code>com.github.RiccardoRossiMori.GraviTTT.Model.Pawn</code> a caso
      * nella <code>Checkerbox</code> in uso.
-     * @return
      *
+     * @return
      */
     @Override
     public int strategy() {
-        int x= random.nextInt(this.checkerboardManager.getCheckerboard().getDimensioni().getColumn());
-        return x==0?x:x-1;
+        final int x = this.random.nextInt(checkerboardManager.getCheckerboard().getDimensioni().getColumn());
+        return x == 0 ? x : x - 1;
     }
 }

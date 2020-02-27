@@ -1,8 +1,9 @@
 package com.github.RiccardoRossiMori.GraviTTT.Model;
 
-import java.io.BufferedReader;
+import com.github.RiccardoRossiMori.GraviTTT.Controller.GameManager;
+import com.github.RiccardoRossiMori.GraviTTT.Controller.GameManagerInterface;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  * <b>Responsabilità: </b> Gestisce la strategia di un giocatore interattivo.
@@ -10,30 +11,27 @@ import java.io.InputStreamReader;
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public class InteractivePlayer implements Player {
+    GameManagerInterface gameManager;
+
+    public InteractivePlayer(final GameManager gameManager) {
+        this.gameManager = gameManager;
+    }
+
     /**
-     *
      * Implementa la strategia di gioco di un giocatore interattivo, per tanto
      * chiederà in input un valore intero corrispondente alla colonna nella quale
-     * verrà posizionata la pedina.
+     * verrà posizionata la pedina (in questa implementazione viene sottratto 1 a
+     * tale numero poiché si ipotizza che nelle view le colonne partino da 1 e non
+     * da 0 come nella tabella di gioco).
+     *
      * @return
      * @throws IOException
      * @throws NumberFormatException
-     *
      */
     @Override
-    //TODO cambia implementazione in modo che l'input non dipendi da questa classe
     public int strategy() throws NumberFormatException, IOException {
-        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-        int colonna = Integer.parseInt(read.readLine())-1;
-        return colonna;
+        return this.gameManager.getterIntegerInput() - 1;
     }
-
-    /*@Override
-    public String stampa() {
-        return "com.github.RiccardoRossiMori.GraviTTT.Model.InteractivePlayer";
-    }*/
-
 }

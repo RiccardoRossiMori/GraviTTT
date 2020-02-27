@@ -12,16 +12,16 @@ public enum Assi {
      * @param deviatoio
      * @return
      */
-    public Orientamento dammiLaDirezione(boolean deviatoio){
-        switch (this){
+    public Orientamento dammiLaDirezione(final boolean deviatoio) {
+        switch (this) {
             case Verticale:
-                return deviatoio?Orientamento.Nord:Orientamento.Sud;
+                return deviatoio ? Orientamento.Nord : Orientamento.Sud;
             case Orizzontale:
-                return deviatoio?Orientamento.Est:Orientamento.Ovest;
+                return deviatoio ? Orientamento.Est : Orientamento.Ovest;
             case Diagonale_dx:
-                return deviatoio?Orientamento.Nord_Est:Orientamento.Sud_Ovest;
+                return deviatoio ? Orientamento.Nord_Est : Orientamento.Sud_Ovest;
             case Diagonale_sx:
-                return  deviatoio?Orientamento.Nord_Ovest:Orientamento.Sud_Est;
+                return deviatoio ? Orientamento.Nord_Ovest : Orientamento.Sud_Est;
             default:
                 return null;
         }

@@ -13,17 +13,16 @@ import java.io.IOException;
  * -inserire pedine
  * -cambio turni
  * -conclude il gioco in caso di vincita di un giocatore.
- */
-
-/**
+ *
  * @author Riccardo Rossi Mori
  */
 public class GameManager implements GameManagerInterface {
     private GraviTTTView vista;
     private Player giocatore1, giocatore2;
-    private StartGameInterface startGameInterface;
-    private CheckerboardManager checkerboardManager;
+    private final StartGameInterface startGameInterface;
+    private final CheckerboardManager checkerboardManager;
     private boolean winner, turno;
+
     /*
      * TODO verifica di rispettare i principi "L" ed "I" dei principi SOLID
      * TODO refactoring variabili e metodi in modo che sia tutto in una lingua unica (inglese o italiano)
@@ -33,14 +32,13 @@ public class GameManager implements GameManagerInterface {
      */
     public GameManager(MatrixCheckerboard matrixCheckerboard) {
         this.startGameInterface = new StartGameDefault();
-        //this.dimensioni = CheckerboardVariables.DEFAULT_SIZE;//TODO controlla se puoi eliminare le due righe commentate
-        //this.setCheckerboard(matrixCheckerboard);
         this.checkerboardManager = new CheckerboardManager(matrixCheckerboard);
         this.winner = false;
     }
 
     /**
      * Ritorna il manager della tabella di gioco.
+     *
      * @return
      */
     public CheckerboardManager getCheckerboardManager() {
@@ -57,10 +55,11 @@ public class GameManager implements GameManagerInterface {
 
     /**
      * Ritorna il valore del turno.
-     * @return
+     *
+     * @return turno value.
      */
     public boolean isTurno() {
-        return turno;
+        return this.turno;
     }
 
     /**
@@ -69,17 +68,16 @@ public class GameManager implements GameManagerInterface {
      * @return giocatore1|giocatore2
      */
     private Player getGiocatore() {
-        return turno ? giocatore1 : giocatore2;
+        return this.turno ? this.giocatore1 : this.giocatore2;
     }
 
     /**
      * Gestisce una o più partite consecutive tra due giocatori.
      *
      * @throws IOException
-     * @throws IllegalPawnPlacementException
      */
     @Override
-    public void play() throws IOException, IllegalPawnPlacementException {
+    public void play() throws IOException {
         //inizializzazione partita
         this.start();
         //gestione partita
@@ -108,30 +106,32 @@ public class GameManager implements GameManagerInterface {
     private void partita() throws IOException {
         this.turno = true;
         this.status();
-        while (!winner) {
+        while (!this.winner) {
             this.sendMessage("Ora è il turno del " + (this.turno ? "giocatore uno " : "giocatore due") + "\n");
-            winner=this.mossa();
+            this.winner = this.mossa();
             this.status();
-            if (!winner)
-                cambioTurno();
+            if (!this.winner)
+                this.cambioTurno();
         }
     }
 
     /**
-     *  Gestisce la singola mossa, ritornando true solo se l'ultima mossa è stata vincente.
+     * Gestisce la singola mossa, ritornando true solo se l'ultima mossa è stata vincente.
      *
      * @return winner
      * @throws IOException
      */
     private boolean mossa() throws IOException {
         try {
-            return winner = checkerboardManager.action(getGiocatore().strategy(), turno);//TODO trova soluzione più semplice ed efficace (?)
-        } catch (IllegalPawnPlacementException i) {
+            return this.winner = this.checkerboardManager.action(this.getGiocatore().strategy(), this.turno);//TODO trova soluzione più semplice ed efficace (?)
+        } catch (final IllegalPawnPlacementException i) {
             this.sendMessage("Errore, colonna non valida!");
-        } catch (NumberFormatException n){
+            this.turno =!this.turno;
+        } catch (final NumberFormatException n) {
             this.sendMessage("Errore: inserire un numero!");
+            this.turno =!this.turno;
         }
-        return winner;
+        return this.winner;
     }
 
     /**
@@ -146,7 +146,7 @@ public class GameManager implements GameManagerInterface {
      *
      * @param string
      */
-    private void sendMessage(String string) {//TODO creare un metodo public in interface per ereditare il metodo obbligatoriamente
+    private void sendMessage(final String string) {//TODO creare un metodo public in interface per ereditare il metodo obbligatoriamente
         vista.printMessage(string);
     }
 
@@ -157,12 +157,23 @@ public class GameManager implements GameManagerInterface {
         vista.printCheckerboard(checkerboardManager.toPrint());
     }
 
+    @Override
+    public GraviTTTView getVista() {
+        return this.vista;
+    }
 
     public void setVista(GraviTTTView vista) {
         this.vista = vista;
     }
 
-    public GraviTTTView getVista() {
-        return this.vista;
+    /**
+     * Chiede alla view un input intero e lo ritorna.
+     *
+     * @return l'input preso dalla view.
+     * @throws IOException
+     */
+    @Override
+    public int getterIntegerInput() throws IOException {
+        return this.vista.getIntInput();
     }
 }

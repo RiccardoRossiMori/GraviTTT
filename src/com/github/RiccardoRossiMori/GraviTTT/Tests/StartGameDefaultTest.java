@@ -20,31 +20,31 @@ class StartGameDefaultTest {
 
     @BeforeEach
     void setUp() {
-        this.game = new GameManager(new MatrixCheckerboard(dimensioni));
-        this.startGameInterface = new StartGameDefault();
+        game = new GameManager(new MatrixCheckerboard(this.dimensioni));
+        startGameInterface = new StartGameDefault();
     }
 
     @Test
     void scegliGiocatori() throws IOException {
-        startGameInterface.init(game);
+        this.startGameInterface.init(this.game);
         Player player;
-        InputStream sysInBackup = System.in; // backup System.in to restore it later
-        this.giocatore(true);
-        player = startGameInterface.scegliGiocatori("prova");
+        final InputStream sysInBackup = System.in; // backup System.in to restore it later
+        giocatore(true);
+        player = this.startGameInterface.scegliGiocatori("prova");
         assertEquals(player.getClass(), RandomPlayer.class);
-        this.giocatore(false);
-        player = startGameInterface.scegliGiocatori("prova2");
+        giocatore(false);
+        player = this.startGameInterface.scegliGiocatori("prova2");
         assertEquals(player.getClass(), InteractivePlayer.class);
     }
 
-    private void giocatore(boolean uno) {
+    private void giocatore(final boolean uno) {
         if (uno) {
-            String input = "bot";
-            InputStream in = new ByteArrayInputStream(input.getBytes());
+            final String input = "bot";
+            final InputStream in = new ByteArrayInputStream(input.getBytes());
             System.setIn(in);
         } else {
-            String input = "\n";
-            InputStream in = new ByteArrayInputStream(input.getBytes());
+            final String input = "\n";
+            final InputStream in = new ByteArrayInputStream(input.getBytes());
             System.setIn(in);
         }
     }

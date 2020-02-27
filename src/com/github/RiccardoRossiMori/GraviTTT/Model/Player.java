@@ -1,7 +1,5 @@
 package com.github.RiccardoRossiMori.GraviTTT.Model;
 
-import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
-
 import java.io.IOException;
 
 /**
@@ -11,7 +9,6 @@ import java.io.IOException;
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public interface Player {
 
@@ -23,9 +20,9 @@ public interface Player {
      * @throws NumberFormatException
      * @throws IOException
      */
-    int strategy()throws NumberFormatException, IOException;
+    int strategy() throws NumberFormatException, IOException;
 
-   // int strategy();
+    // int strategy();
 
     // String stampa();//TODO verifica se eliminare il metodo
 }

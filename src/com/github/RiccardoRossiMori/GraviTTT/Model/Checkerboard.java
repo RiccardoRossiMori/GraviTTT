@@ -6,24 +6,23 @@ import com.github.RiccardoRossiMori.GraviTTT.Exceptions.IllegalPawnPlacementExce
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public interface Checkerboard {
 
 
     /**
-     *
      * Prova ad inserire un <code>com.github.RiccardoRossiMori.GraviTTT.Model.Pawn</code> nella colonna <code>p</code>.
      *
      * @param p
      * @param disco
-     * @throws IllegalPawnPlacementException
      * @return
+     * @throws IllegalPawnPlacementException
      */
     boolean putPawn(int p, Pawn disco) throws IllegalPawnPlacementException;
 
     /**
      * Restituisce vero o falso a seconda se l'ultima mossa sia stata o meno vincente.
+     *
      * @param i
      * @param j
      * @return
@@ -31,7 +30,6 @@ public interface Checkerboard {
     boolean vincitore(int i, int j);
 
     /**
-     *
      * Data una <code>column</code> restituisce la riga disponibile per posizionare la pedina.
      *
      * @param column
@@ -40,7 +38,6 @@ public interface Checkerboard {
     int gravity(int column) throws IllegalPawnPlacementException;
 
     /**
-     *
      * Si vuole andare a trovare le pedine circostanti dello stesso colore
      * ricorsivamente per verificare che ve ne siano 4 consecutive e dichiarare
      * quel giocatore come vincitore della partita.

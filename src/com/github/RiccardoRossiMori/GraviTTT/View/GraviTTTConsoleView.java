@@ -1,7 +1,5 @@
 package com.github.RiccardoRossiMori.GraviTTT.View;
 
-import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
-import com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.MatrixCheckerboard;
 
 import java.io.BufferedReader;
@@ -16,7 +14,6 @@ import java.util.stream.Stream;
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public class GraviTTTConsoleView implements GraviTTTView {
     public static final String RED = "R";
@@ -33,9 +30,9 @@ public class GraviTTTConsoleView implements GraviTTTView {
      * @param scacchiera
      */
     @Override
-    public void printCheckerboard(String scacchiera) {
-        printer = Stream.of(scacchiera);
-        printer.forEach(System.out::println);
+    public void printCheckerboard(final String scacchiera) {
+        this.printer = Stream.of(scacchiera);
+        this.printer.forEach(System.out::println);
     }
 
     /**
@@ -44,8 +41,8 @@ public class GraviTTTConsoleView implements GraviTTTView {
      * @param message
      */
     @Override
-    public void printMessage(String message){
-        this.print(message);
+    public void printMessage(final String message) {
+        print(message);
     }
 
 
@@ -54,9 +51,9 @@ public class GraviTTTConsoleView implements GraviTTTView {
      *
      * @param string
      */
-    private void print(String string) {
-        printer = Stream.of(string);
-        printer.forEach(System.out::println);
+    private void print(final String string) {
+        this.printer = Stream.of(string);
+        this.printer.forEach(System.out::println);
     }
 
     /**
@@ -67,8 +64,20 @@ public class GraviTTTConsoleView implements GraviTTTView {
      */
     @Override
     public String getInput() throws IOException {
-        buffer = new BufferedReader(new InputStreamReader(System.in));
-        return buffer.readLine();
+        this.buffer = new BufferedReader(new InputStreamReader(System.in));
+        return this.buffer.readLine();
+    }
+
+    /**
+     * Prende specificatamente un numero dall'esterno e lo restituisce come intero.
+     *
+     * @return
+     * @throws IOException
+     */
+    @Override
+    public int getIntInput() throws IOException {
+        this.buffer = new BufferedReader(new InputStreamReader(System.in));
+        return Integer.parseInt(this.buffer.readLine());
     }
 
     /**
@@ -79,8 +88,8 @@ public class GraviTTTConsoleView implements GraviTTTView {
      * @throws IOException
      */
     @Override
-    public String getStringPlayer(String message) throws IOException {
-        this.print(message);
-        return getInput();
+    public String getStringPlayer(final String message) throws IOException {
+        print(message);
+        return this.getInput();
     }
 }

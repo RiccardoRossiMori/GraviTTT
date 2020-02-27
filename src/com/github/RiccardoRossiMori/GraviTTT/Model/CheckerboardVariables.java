@@ -7,7 +7,6 @@ package com.github.RiccardoRossiMori.GraviTTT.Model; /**
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public class CheckerboardVariables {
     public static final CheckerboardVariables DEFAULT_SIZE = new CheckerboardVariables(6, 7, true);
@@ -21,10 +20,10 @@ public class CheckerboardVariables {
      * @param row
      * @param column
      */
-    public CheckerboardVariables(int row, int column, boolean limitation) {
+    public CheckerboardVariables(final int row, final int column, final boolean limitation) {
         this.column = column;
         this.row = row;
-        this.limited = limitation;
+        limited = limitation;
     }
 
     /**
@@ -33,7 +32,7 @@ public class CheckerboardVariables {
      * @return the row
      */
     public int getRow() {
-        return row;
+        return this.row;
     }
 
     /**
@@ -42,7 +41,7 @@ public class CheckerboardVariables {
      * @return the column
      */
     public int getColumn() {
-        return column;
+        return this.column;
     }
 
     /**
@@ -52,7 +51,7 @@ public class CheckerboardVariables {
      * @return the limited
      */
     public boolean isLimited() {
-        return limited;
+        return this.limited;
     }
 
 }

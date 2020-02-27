@@ -4,8 +4,7 @@ package com.github.RiccardoRossiMori.GraviTTT.Model; /**
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public enum Pawn {
-    Red, Green, None;
+    Red, Green, None
 }

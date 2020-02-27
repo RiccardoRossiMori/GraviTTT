@@ -5,7 +5,6 @@ package com.github.RiccardoRossiMori.GraviTTT.Exceptions; /**
 
 /**
  * @author Riccardo Rossi Mori
- *
  */
 public class IllegalPawnPlacementException extends GraviTTTExceptions {
 

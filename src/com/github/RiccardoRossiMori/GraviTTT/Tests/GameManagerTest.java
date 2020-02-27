@@ -12,29 +12,29 @@ import org.junit.jupiter.api.Test;
 
 class GameManagerTest {
 
-        CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
-        GameManager game;
-        StartGameInterface startGameInterface;
+    CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
+    GameManager game;
+    StartGameInterface startGameInterface;
 
-        @BeforeEach
-        void setUp() {
-            this.game = new GameManager(new MatrixCheckerboard(dimensioni));
-            this.startGameInterface = new StartGameDefault();
-        }
+    @BeforeEach
+    void setUp() {
+        game = new GameManager(new MatrixCheckerboard(this.dimensioni));
+        startGameInterface = new StartGameDefault();
+    }
 
-        @Test
-        void getCheckerboardManager() {
-            Assertions.assertEquals(CheckerboardManager.class, game.getCheckerboardManager().getClass(), "tutto ok");
-        }
+    @Test
+    void getCheckerboardManager() {
+        Assertions.assertEquals(CheckerboardManager.class, this.game.getCheckerboardManager().getClass(), "tutto ok");
+    }
 
-        @Test
-        void cambioTurno() {
-            if (game.isTurno()) {
-                game.cambioTurno();
-                Assertions.assertFalse(game.isTurno());
-            } else {
-                game.cambioTurno();
-                Assertions.assertTrue(game.isTurno());
-            }
+    @Test
+    void cambioTurno() {
+        if (this.game.isTurno()) {
+            this.game.cambioTurno();
+            Assertions.assertFalse(this.game.isTurno());
+        } else {
+            this.game.cambioTurno();
+            Assertions.assertTrue(this.game.isTurno());
         }
+    }
 }

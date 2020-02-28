@@ -24,13 +24,13 @@ public class GraviTTTConsoleView implements GraviTTTView {
     private Stream<String> printer;
 
     /**
-     * Stampa a video la scacchiera presa come stringa
+     * Stampa a video la checkerboard presa come stringa
      *
-     * @param scacchiera
+     * @param checkerboard
      */
     @Override
-    public void printCheckerboard(final String scacchiera) {
-        this.printer = Stream.of(scacchiera);
+    public void printCheckerboard(final String checkerboard) {
+        this.printer = Stream.of(checkerboard);
         this.printer.forEach(System.out::println);
     }
 

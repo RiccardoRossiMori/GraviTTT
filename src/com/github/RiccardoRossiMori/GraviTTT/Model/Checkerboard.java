@@ -44,19 +44,19 @@ public interface Checkerboard {
      *
      * @return
      */
-    int pawnNeighbor(Orientamento x);
+    int pawnNeighbor(Direction x);
 
     /**
      * Ritorna la tabella di gioco sotto forma di stringa per poter essere stampata.
      *
      * @return
      */
-    String stampa();
+    String checkerboardToString();
 
     /**
      * Restituisce le dimensioni della tabella.
      *
      * @return
      */
-    CheckerboardVariables getDimensioni();
+    CheckerboardVariables getDimensions();
 }

@@ -10,18 +10,18 @@ import java.io.IOException;
 
 /**
  * <b>Responsabilità: </b>Gestisce la partita di due giocatori, dunque:
- * -inserire pedine
+ * -permette di inserire pedine
  * -cambio turni
  * -conclude il gioco in caso di vincita di un giocatore.
  *
  * @author Riccardo Rossi Mori
  */
 public class GameManager implements GameManagerInterface {
-    private GraviTTTView vista;
-    private Player giocatore1, giocatore2;
+    private GraviTTTView view;
+    private Player player1, player2;
     private final StartGameInterface startGameInterface;
     private final CheckerboardManager checkerboardManager;
-    private boolean winner, turno;
+    private boolean winner, turn;
 
     /*
      * TODO Scrivi test per le eccezioni
@@ -50,8 +50,8 @@ public class GameManager implements GameManagerInterface {
      * Gestisce il cambio turno durante una partita.
      */
     @Override
-    public void cambioTurno() {
-        this.turno = !turno;
+    public void swapTurn() {
+        this.turn = !turn;
     }
 
     /**
@@ -59,8 +59,8 @@ public class GameManager implements GameManagerInterface {
      *
      * @return turno value.
      */
-    public boolean isTurno() {
-        return this.turno;
+    public boolean isTurn() {
+        return this.turn;
     }
 
     /**
@@ -68,8 +68,8 @@ public class GameManager implements GameManagerInterface {
      *
      * @return giocatore1|giocatore2
      */
-    private Player getGiocatore() {
-        return this.turno ? this.giocatore1 : this.giocatore2;
+    private Player getActualPlayer() {
+        return this.turn ? this.player1 : this.player2;
     }
 
     /**
@@ -80,8 +80,8 @@ public class GameManager implements GameManagerInterface {
     @Override
     public void play() throws IOException {
         this.start();
-        this.partita();
-        this.conclusione();
+        this.match();
+        this.conclusion();
     }
 
 
@@ -92,8 +92,8 @@ public class GameManager implements GameManagerInterface {
      */
     private void start() throws IOException {
         startGameInterface.init(this);
-        this.giocatore1 = startGameInterface.scegliGiocatori("Primo");
-        this.giocatore2 = startGameInterface.scegliGiocatori("Secondo");
+        this.player1 = startGameInterface.getPlayer("Primo");
+        this.player2 = startGameInterface.getPlayer("Secondo");
     }
 
     /**
@@ -101,15 +101,15 @@ public class GameManager implements GameManagerInterface {
      *
      * @throws IOException
      */
-    private void partita() throws IOException {
-        this.turno = true;
+    private void match() throws IOException {
+        this.turn = true;
         this.status();
         while (!this.winner) {
-            this.sendMessage("Ora è il turno del " + (this.turno ? "giocatore uno " : "giocatore due") + "\n");
-            this.winner = this.mossa();
+            this.sendMessage("Ora è il turno del " + (this.turn ? "giocatore uno " : "giocatore due") + "\n");
+            this.winner = this.move();
             this.status();
             if (!this.winner)
-                this.cambioTurno();
+                this.swapTurn();
         }
     }
 
@@ -119,15 +119,15 @@ public class GameManager implements GameManagerInterface {
      * @return winner
      * @throws IOException
      */
-    private boolean mossa() throws IOException {
+    private boolean move() throws IOException {
         try {
-            return this.winner = this.checkerboardManager.action(this.getGiocatore().strategy(), this.turno);
+            return this.winner = this.checkerboardManager.action(this.getActualPlayer().strategy(), this.turn);
         } catch (final IllegalPawnPlacementException i) {
             this.sendMessage("Errore, colonna non valida!");
-            this.turno =!this.turno;
+            this.turn =!this.turn;
         } catch (final NumberFormatException n) {
             this.sendMessage("Errore: inserire un numero!");
-            this.turno =!this.turno;
+            this.turn =!this.turn;
         }
         return this.winner;
     }
@@ -135,8 +135,8 @@ public class GameManager implements GameManagerInterface {
     /**
      * Stampa a video il vincitore della partita.
      */
-    private void conclusione() {
-        this.sendMessage("La vittoria è del " + (this.turno ? "giocatore uno " : "giocatore due") + "\n");
+    private void conclusion() {
+        this.sendMessage("La vittoria è del " + (this.turn ? "giocatore uno " : "giocatore due") + "\n");
     }
 
     /**
@@ -146,23 +146,24 @@ public class GameManager implements GameManagerInterface {
      */
     @Override
     public void sendMessage(final String string) {
-        vista.printMessage(string);
+        view.printMessage(string);
     }
 
     /**
      * Ha il compito di chiedere alla view una stampa aggiornata della tabella di gioco.
      */
     private void status() {
-        vista.printCheckerboard(checkerboardManager.toPrint());
+        view.printCheckerboard(
+                checkerboardManager.getCheckerboard().checkerboardToString());
     }
 
     @Override
-    public GraviTTTView getVista() {
-        return this.vista;
+    public GraviTTTView getView() {
+        return this.view;
     }
 
-    public void setVista(GraviTTTView vista) {
-        this.vista = vista;
+    public void setView(GraviTTTView view) {
+        this.view = view;
     }
 
     /**
@@ -173,6 +174,6 @@ public class GameManager implements GameManagerInterface {
      */
     @Override
     public int getterIntegerInput() throws IOException {
-        return this.vista.getIntInput();
+        return this.view.getIntInput();
     }
 }

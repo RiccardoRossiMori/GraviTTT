@@ -16,10 +16,10 @@ import java.util.function.BiFunction;
  */
 public class MatrixCheckerboard implements Checkerboard {
 
-    private CheckerboardVariables dimensioni;
+    private CheckerboardVariables dimensions;
     private Pawn[][] checkerboard;
     private int lastRow, lastColumn;
-    private final EnumSet<Assi> direzioni = EnumSet.allOf(Assi.class);
+    private final EnumSet<Orientations> direzioni = EnumSet.allOf(Orientations.class);
 
     public MatrixCheckerboard(@NotNull final CheckerboardVariables s) {//TODO eliminare il @notnull ??
         setCheckerboard(new Pawn[s.getColumn()][s.getRow()]);
@@ -40,8 +40,8 @@ public class MatrixCheckerboard implements Checkerboard {
      * @return
      */
     @Override
-    public CheckerboardVariables getDimensioni() {
-        return this.dimensioni;
+    public CheckerboardVariables getDimensions() {
+        return this.dimensions;
     }
 
     /**
@@ -50,7 +50,7 @@ public class MatrixCheckerboard implements Checkerboard {
      * @return
      */
     @Override
-    public String stampa() {
+    public String checkerboardToString() {
         return this.toPrint((j, i) -> (this.checkerboard[i][j] == com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.None ?
                 com.github.RiccardoRossiMori.GraviTTT.View.GraviTTTConsoleView.NONE :
                 (checkerboard[i][j] == com.github.RiccardoRossiMori.GraviTTT.Model.Pawn.Red ?
@@ -66,12 +66,12 @@ public class MatrixCheckerboard implements Checkerboard {
      */
     public String toPrint(final BiFunction<Integer, Integer, String> smacco) {
         String brico = String.format("%4s"," ");
-        for (int i = 0; i < this.dimensioni.getColumn(); i++)
+        for (int i = 0; i < this.dimensions.getColumn(); i++)
             brico += String.format("%3d ", (i + 1));
         brico += String.format("\n");
-        for (int j = this.dimensioni.getRow() - 1; j >= 0; j--) {
+        for (int j = this.dimensions.getRow() - 1; j >= 0; j--) {
             brico += String.format("%3d ", (j + 1));
-            for (int i = 0; i < this.dimensioni.getColumn(); i++) {
+            for (int i = 0; i < this.dimensions.getColumn(); i++) {
                 brico += String.format("| %s ", smacco.apply(j, i));
             }
             brico += String.format(" #\n");
@@ -108,7 +108,7 @@ public class MatrixCheckerboard implements Checkerboard {
      * @return
      */
     private boolean isOut(final int p) {
-        return p > this.dimensioni.getColumn() || p < 0;
+        return p > this.dimensions.getColumn() || p < 0;
     }
 
     /**
@@ -120,9 +120,9 @@ public class MatrixCheckerboard implements Checkerboard {
      */
     @Override
     public boolean vincitore(final int i, final int j) {
-        for (final Assi asse : this.direzioni) {
-            if ((pawnNeighbor(asse.dammiLaDirezione(true))
-                    + (pawnNeighbor(asse.dammiLaDirezione(false)) - 1)) >= 4)
+        for (final Orientations asse : this.direzioni) {
+            if ((pawnNeighbor(asse.getDirection(true))
+                    + (pawnNeighbor(asse.getDirection(false)) - 1)) >= 4)
                 return true;
         }
         return false;
@@ -139,7 +139,7 @@ public class MatrixCheckerboard implements Checkerboard {
     @Override
     public int gravity(final int column) throws IllegalPawnPlacementException {
         int i = 0;
-        while (i < dimensioni.getRow()) {
+        while (i < dimensions.getRow()) {
             if (this.checkerboard[column][i] == Pawn.None) {
                 return i;
             } else
@@ -157,8 +157,8 @@ public class MatrixCheckerboard implements Checkerboard {
      * @return
      */
 
-    private int vicini(final int row, final int column, final Orientamento x) {
-        if (row < 0 || row >= this.dimensioni.getRow() || column < 0 || column >= this.dimensioni.getColumn())
+    private int vicini(final int row, final int column, final Direction x) {
+        if (row < 0 || row >= this.dimensions.getRow() || column < 0 || column >= this.dimensions.getColumn())
             return 0;
         if (this.checkerboard[this.lastColumn][this.lastRow] == this.checkerboard[column][row])
             return this.vicini(row + x.rowMove(), column + x.columnMove(), x) + 1;
@@ -172,7 +172,7 @@ public class MatrixCheckerboard implements Checkerboard {
      * @return
      */
     @Override
-    public int pawnNeighbor(final Orientamento x) {
+    public int pawnNeighbor(final Direction x) {
         return this.vicini(this.lastRow, this.lastColumn, x);
     }
 
@@ -181,7 +181,7 @@ public class MatrixCheckerboard implements Checkerboard {
      * @param checkerboardVariables the checkerboardVariables to set
      */
     private void setVariabiliDiGioco(final CheckerboardVariables checkerboardVariables) {
-        dimensioni = checkerboardVariables;
+        dimensions = checkerboardVariables;
     }
 
 }

@@ -38,9 +38,9 @@ public interface StartGameInterface {
      * Restituisce un giocatore. La stringa passata come parametro è solo per poter
      * stampare a video se si tratti del primo o del secondo giocatore.
      *
-     * @param giocatoreNumeroX
+     * @param playerNumber
      * @return
      * @throws IOException
      */
-    Player scegliGiocatori(String giocatoreNumeroX) throws IOException;
+    Player getPlayer(String playerNumber) throws IOException;
 }

@@ -48,7 +48,7 @@ public class RandomPlayer implements Player {
      */
     @Override
     public int strategy() {
-        final int x = this.random.nextInt(checkerboardManager.getCheckerboard().getDimensioni().getColumn());
+        final int x = this.random.nextInt(checkerboardManager.getCheckerboard().getDimensions().getColumn());
         return x == 0 ? x : x - 1;
     }
 }

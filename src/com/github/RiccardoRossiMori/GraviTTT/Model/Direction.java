@@ -4,8 +4,8 @@ package com.github.RiccardoRossiMori.GraviTTT.Model;
  * Responsabilità: restituire una direzione per permettere la verifica
  * della vittoria di un giocatore.
  */
-public enum Orientamento {
-    Nord, Nord_Est, Est, Sud_Est, Sud, Sud_Ovest, Ovest, Nord_Ovest;
+public enum Direction {
+    North, North_East, East, South_East, South, South_West, West, North_West;
 
     /**
      * Restituisce la direzione verticale sotto forma di addizione numerica da chi chiama
@@ -14,8 +14,8 @@ public enum Orientamento {
      * @return
      */
     public int rowMove() {
-        if (this == Orientamento.Nord || this == Orientamento.Nord_Est || this == Orientamento.Nord_Ovest) return 1;
-        if (this == Orientamento.Sud || this == Orientamento.Sud_Est || this == Orientamento.Sud_Ovest) return -1;
+        if (this == Direction.North || this == Direction.North_East || this == Direction.North_West) return 1;
+        if (this == Direction.South || this == Direction.South_East || this == Direction.South_West) return -1;
         return 0;
     }
 
@@ -26,8 +26,8 @@ public enum Orientamento {
      * @return
      */
     public int columnMove() {
-        if (this == Orientamento.Est || this == Orientamento.Nord_Est || this == Orientamento.Sud_Est) return 1;
-        if (this == Orientamento.Ovest || this == Orientamento.Nord_Ovest || this == Orientamento.Sud_Ovest) return -1;
+        if (this == Direction.East || this == Direction.North_East || this == Direction.South_East) return 1;
+        if (this == Direction.West || this == Direction.North_West || this == Direction.South_West) return -1;
         return 0;
     }
 }

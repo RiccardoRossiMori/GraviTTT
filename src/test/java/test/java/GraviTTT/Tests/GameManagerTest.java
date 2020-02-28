@@ -1,4 +1,4 @@
-package com.github.RiccardoRossiMori.GraviTTT.Tests;
+package test.java.GraviTTT.Tests;
 
 import com.github.RiccardoRossiMori.GraviTTT.Controller.CheckerboardManager;
 import com.github.RiccardoRossiMori.GraviTTT.Controller.GameManager;
@@ -12,13 +12,13 @@ import org.junit.jupiter.api.Test;
 
 class GameManagerTest {
 
-    CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
+    CheckerboardVariables dimension = CheckerboardVariables.DEFAULT_SIZE;
     GameManager game;
     StartGameInterface startGameInterface;
 
     @BeforeEach
     void setUp() {
-        game = new GameManager(new MatrixCheckerboard(this.dimensioni));
+        game = new GameManager(new MatrixCheckerboard(this.dimension));
         startGameInterface = new StartGameDefault();
     }
 
@@ -29,12 +29,12 @@ class GameManagerTest {
 
     @Test
     void cambioTurno() {
-        if (this.game.isTurno()) {
-            this.game.cambioTurno();
-            Assertions.assertFalse(this.game.isTurno());
+        if (this.game.isTurn()) {
+            this.game.swapTurn();
+            Assertions.assertFalse(this.game.isTurn());
         } else {
-            this.game.cambioTurno();
-            Assertions.assertTrue(this.game.isTurno());
+            this.game.swapTurn();
+            Assertions.assertTrue(this.game.isTurn());
         }
     }
 }

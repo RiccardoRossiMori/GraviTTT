@@ -1,17 +1,16 @@
-package com.github.RiccardoRossiMori.GraviTTT.Tests;
+package test.java.GraviTTT.Tests;
 
 import com.github.RiccardoRossiMori.GraviTTT.Controller.GameManager;
 import com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameDefault;
 import com.github.RiccardoRossiMori.GraviTTT.Controller.StartGameInterface;
 import com.github.RiccardoRossiMori.GraviTTT.Model.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StartGameDefaultTest {
     CheckerboardVariables dimensioni = CheckerboardVariables.DEFAULT_SIZE;
@@ -30,11 +29,11 @@ class StartGameDefaultTest {
         Player player;
         final InputStream sysInBackup = System.in; // backup System.in to restore it later
         giocatore(true);
-        player = this.startGameInterface.scegliGiocatori("prova");
-        assertEquals(player.getClass(), RandomPlayer.class);
+        player = this.startGameInterface.getPlayer("prova");
+        Assertions.assertEquals(player.getClass(), RandomPlayer.class);
         giocatore(false);
-        player = this.startGameInterface.scegliGiocatori("prova2");
-        assertEquals(player.getClass(), InteractivePlayer.class);
+        player = this.startGameInterface.getPlayer("prova2");
+        Assertions.assertEquals(player.getClass(), InteractivePlayer.class);
     }
 
     private void giocatore(final boolean uno) {

@@ -40,7 +40,7 @@ public class StartGameDefault implements StartGameInterface {
     @Override
     public void init(final GameManager gameManager) {
         this.gameManager = gameManager;
-        gameManager.setVista(new GraviTTTConsoleView());
+        gameManager.setView(new GraviTTTConsoleView());
     }
 
     /**
@@ -50,15 +50,18 @@ public class StartGameDefault implements StartGameInterface {
      * com.github.RiccardoRossiMori.GraviTTT.Model.Player di tipo com.github.RiccardoRossiMori.GraviTTT.Model.InteractivePlayer, ossia un giocatore Interattivo.
      * Potrebbe essere lanciata una IOException poiché richiede degli input esterni.
      *
-     * @param giocatoreNumeroX
+     * @param playerNumber
      * @return Player
      * @throws IOException
      */
     @Override
-    public Player scegliGiocatori(final String giocatoreNumeroX) throws IOException {
-        final String tipoDiGiocatoreScelto; //x= vista.getStringPlayer("Primo giocatore, inserisci 'bot' per il primo giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
-        tipoDiGiocatoreScelto = this.gameManager.getVista().getStringPlayer(giocatoreNumeroX + " giocatore, inserisci 'bot' per il giocatore random, premi un qualunque altro tasto per il giocatore interattivo.");
-        return StartGameDefault.getPlayerFactory(tipoDiGiocatoreScelto.toLowerCase(), this.gameManager.getCheckerboardManager(), this.gameManager);
+    public Player getPlayer(final String playerNumber) throws IOException {
+        final String playerType;
+        playerType = this.gameManager.getView().getStringPlayer(playerNumber +
+                " giocatore, inserisci 'bot' per il giocatore random, " +
+                "premi un qualunque altro tasto per il giocatore interattivo.");
+        return StartGameDefault.getPlayerFactory(playerType.toLowerCase(),
+                this.gameManager.getCheckerboardManager(), this.gameManager);
     }
 
 }

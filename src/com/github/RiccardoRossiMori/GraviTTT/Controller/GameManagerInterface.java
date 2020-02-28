@@ -24,7 +24,7 @@ public interface GameManagerInterface {
     /**
      * Fa sì che il turno passi da un giocatore ad un altro.
      */
-    void cambioTurno();
+    void swapTurn();
 
     /**
      * Gestisce una o più partite consecutive tra due giocatori.
@@ -41,7 +41,7 @@ public interface GameManagerInterface {
      */
     void sendMessage(String string);
 
-    GraviTTTView getVista();
+    GraviTTTView getView();
 
     /**
      * Chiede alla view un input intero e lo ritorna.

@@ -6,12 +6,12 @@ import com.github.RiccardoRossiMori.GraviTTT.Model.Checkerboard;
 import com.github.RiccardoRossiMori.GraviTTT.Model.Pawn;
 
 /**
- * <b> Responsabilit�: </b> Gestire la scacchiera (posizionare una pedina, )
+ * <b> Responsabilità: </b> Gestire la scacchiera (posizionare una pedina, )
  *
  * @author Riccardo Rossi Mori
  */
 
-public class CheckerboardManager {
+public class CheckerboardManager implements CheckerboardManagerInterface {
     private final Checkerboard checkerboard;
 
     public CheckerboardManager(final Checkerboard checkerboard) {
@@ -23,17 +23,9 @@ public class CheckerboardManager {
      *
      * @return the checkerboard
      */
+    @Override
     public Checkerboard getCheckerboard() {
         return checkerboard;
-    }
-
-    /**
-     * Restituisce una stringa che verrà poi data come parametro alla view per essere stampata.
-     *
-     * @return
-     */
-    public String toPrint() {
-        return checkerboard.stampa();
     }
 
     /**
@@ -41,11 +33,12 @@ public class CheckerboardManager {
      * <code>checkerboard</code>.
      *
      * @param p
-     * @param turno
+     * @param turn
      * @return
      */
-    public boolean action(final int p, final boolean turno) throws IllegalPawnPlacementException {
-        return turno ? this.checkerboard.putPawn(p, Pawn.Red) : this.checkerboard.putPawn(p, Pawn.Green);
+    @Override
+    public boolean action(final int p, final boolean turn) throws IllegalPawnPlacementException {
+        return turn ? this.checkerboard.putPawn(p, Pawn.Red) : this.checkerboard.putPawn(p, Pawn.Green);
     }
 
 }
